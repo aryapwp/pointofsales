@@ -1,0 +1,119 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (soItemView.ActionResult is EmptyResult) // Terminate page
+        return;
+
+    // Layout
+    Layout = soItemView.UseLayout ? "_Layout" : "";
+}
+@if (!soItemView.IsExport()) {
+<div class="btn-toolbar ew-toolbar">
+    @soItemView.ExportOptions.RenderBody()
+    @soItemView.OtherOptions.RenderBody()
+</div>
+}
+@soItemView.ShowPageHeader()
+@soItemView.ShowMessages()
+<main class="view">
+<form name="fso_itemview" id="fso_itemview" class="ew-form ew-view-form overlay-wrapper" action="@AppPath(CurrentPageName())" method="post" novalidate autocomplete="off">
+@if (!soItemView.IsExport()) {
+<script>
+var currentTable = @Html.Raw(ConvertToJson(soItemView.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { so_item: currentTable } });
+var currentPageID = ew.PAGE_ID = "view";
+var currentForm;
+var fso_itemview;
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery;
+    let fields = currentTable.fields;
+
+    // Form object
+    let form = new ew.FormBuilder()
+        .setId("fso_itemview")
+        .setPageId("view")
+        .build();
+    window[form.id] = form;
+    currentForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<script>
+loadjs.ready("head", function() {
+    // Write your client script here, no need to add script tags.
+});
+</script>
+}
+@if (CurrentPage?.CheckToken ?? false) {
+    <input type="hidden" name="@Config.TokenNameKey" value="@Config.TokenName"><!-- CSRF token name -->
+    @Html.AntiForgeryToken()
+}
+<input type="hidden" name="modal" value="@ConvertToInt(soItemView.IsModal)">
+<table class="@(soItemView.TableClass)">
+@if (soItemView.SO_ITEM_ID.Visible) { // soItemView.SO_ITEM_ID.Visible (begin)
+    <tr id="r_SO_ITEM_ID" @Html.Raw(soItemView.SO_ITEM_ID.RowAttributes)>
+        <td class="@(soItemView.TableLeftColumnClass)"><span id="elh_so_item_SO_ITEM_ID">@Html.Raw(soItemView.SO_ITEM_ID.Caption)</span></td>
+        <td data-name="SO_ITEM_ID" @Html.Raw(soItemView.SO_ITEM_ID.CellAttributes)>
+<span id="el_so_item_SO_ITEM_ID">
+<span @Html.Raw(soItemView.SO_ITEM_ID.ViewAttributes)>
+@Html.Raw(soItemView.SO_ITEM_ID.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* soItemView.SO_ITEM_ID.Visible (end) *@
+@if (soItemView.SO_ORDER_ID.Visible) { // soItemView.SO_ORDER_ID.Visible (begin)
+    <tr id="r_SO_ORDER_ID" @Html.Raw(soItemView.SO_ORDER_ID.RowAttributes)>
+        <td class="@(soItemView.TableLeftColumnClass)"><span id="elh_so_item_SO_ORDER_ID">@Html.Raw(soItemView.SO_ORDER_ID.Caption)</span></td>
+        <td data-name="SO_ORDER_ID" @Html.Raw(soItemView.SO_ORDER_ID.CellAttributes)>
+<span id="el_so_item_SO_ORDER_ID">
+<span @Html.Raw(soItemView.SO_ORDER_ID.ViewAttributes)>
+@Html.Raw(soItemView.SO_ORDER_ID.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* soItemView.SO_ORDER_ID.Visible (end) *@
+@if (soItemView.ITEM_NAME.Visible) { // soItemView.ITEM_NAME.Visible (begin)
+    <tr id="r_ITEM_NAME" @Html.Raw(soItemView.ITEM_NAME.RowAttributes)>
+        <td class="@(soItemView.TableLeftColumnClass)"><span id="elh_so_item_ITEM_NAME">@Html.Raw(soItemView.ITEM_NAME.Caption)</span></td>
+        <td data-name="ITEM_NAME" @Html.Raw(soItemView.ITEM_NAME.CellAttributes)>
+<span id="el_so_item_ITEM_NAME">
+<span @Html.Raw(soItemView.ITEM_NAME.ViewAttributes)>
+@Html.Raw(soItemView.ITEM_NAME.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* soItemView.ITEM_NAME.Visible (end) *@
+@if (soItemView.QUANTITY.Visible) { // soItemView.QUANTITY.Visible (begin)
+    <tr id="r_QUANTITY" @Html.Raw(soItemView.QUANTITY.RowAttributes)>
+        <td class="@(soItemView.TableLeftColumnClass)"><span id="elh_so_item_QUANTITY">@Html.Raw(soItemView.QUANTITY.Caption)</span></td>
+        <td data-name="QUANTITY" @Html.Raw(soItemView.QUANTITY.CellAttributes)>
+<span id="el_so_item_QUANTITY">
+<span @Html.Raw(soItemView.QUANTITY.ViewAttributes)>
+@Html.Raw(soItemView.QUANTITY.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* soItemView.QUANTITY.Visible (end) *@
+@if (soItemView.PRICE.Visible) { // soItemView.PRICE.Visible (begin)
+    <tr id="r_PRICE" @Html.Raw(soItemView.PRICE.RowAttributes)>
+        <td class="@(soItemView.TableLeftColumnClass)"><span id="elh_so_item_PRICE">@Html.Raw(soItemView.PRICE.Caption)</span></td>
+        <td data-name="PRICE" @Html.Raw(soItemView.PRICE.CellAttributes)>
+<span id="el_so_item_PRICE">
+<span @Html.Raw(soItemView.PRICE.ViewAttributes)>
+@Html.Raw(soItemView.PRICE.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* soItemView.PRICE.Visible (end) *@
+</table>
+@{ soItemView.CloseRecordset(); }
+</form>
+</main>
+@soItemView.ShowPageFooter()
+@Html.Raw(GetDebugMessage())
+@ElapsedTime()
+@if (!soItemView.IsExport()) {
+<script>
+loadjs.ready("load", function() {
+    // Write your table-specific startup script here
+    // document.write("page loaded");
+});
+</script>
+}

@@ -1,0 +1,757 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\adminlte3\\css\\adminlte.css",
+      "PackagePath": "staticwebassets\\adminlte3\\css\\adminlte.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\adminlte3\\css\\adminlte.min.css",
+      "PackagePath": "staticwebassets\\adminlte3\\css\\adminlte.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\adminlte3\\css\\adminlte.min.css.map",
+      "PackagePath": "staticwebassets\\adminlte3\\css\\adminlte.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\adminlte3\\js\\adminlte.js",
+      "PackagePath": "staticwebassets\\adminlte3\\js\\adminlte.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\adminlte3\\js\\adminlte.js.map",
+      "PackagePath": "staticwebassets\\adminlte3\\js\\adminlte.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\adminlte3\\js\\adminlte.min.js",
+      "PackagePath": "staticwebassets\\adminlte3\\js\\adminlte.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\adminlte3\\js\\adminlte.min.js.map",
+      "PackagePath": "staticwebassets\\adminlte3\\js\\adminlte.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\bootstrap5\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\bootstrap5\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\bootstrap5\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\bootstrap5\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\bootstrap5\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\bootstrap5\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\bootstrap5\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\bootstrap5\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\colorbox\\colorbox.css",
+      "PackagePath": "staticwebassets\\colorbox\\colorbox.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\colorbox\\images\\border.png",
+      "PackagePath": "staticwebassets\\colorbox\\images\\border.png"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\colorbox\\images\\controls.png",
+      "PackagePath": "staticwebassets\\colorbox\\images\\controls.png"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\colorbox\\images\\loading.gif",
+      "PackagePath": "staticwebassets\\colorbox\\images\\loading.gif"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\colorbox\\images\\loading_background.png",
+      "PackagePath": "staticwebassets\\colorbox\\images\\loading_background.png"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\colorbox\\images\\overlay.png",
+      "PackagePath": "staticwebassets\\colorbox\\images\\overlay.png"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\colorbox\\jquery.colorbox-min.js",
+      "PackagePath": "staticwebassets\\colorbox\\jquery.colorbox-min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\colorbox\\jquery.colorbox.js",
+      "PackagePath": "staticwebassets\\colorbox\\jquery.colorbox.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\colorbox\\jquery.colorbox.min.js",
+      "PackagePath": "staticwebassets\\colorbox\\jquery.colorbox.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\colorbox\\jquery.colorbox.min.js.map",
+      "PackagePath": "staticwebassets\\colorbox\\jquery.colorbox.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\OverlayScrollbars.css",
+      "PackagePath": "staticwebassets\\css\\OverlayScrollbars.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\OverlayScrollbars.min.css",
+      "PackagePath": "staticwebassets\\css\\OverlayScrollbars.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\PointofSales.css",
+      "PackagePath": "staticwebassets\\css\\PointofSales.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\PointofSales.min.css",
+      "PackagePath": "staticwebassets\\css\\PointofSales.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\PointofSales.min.css.map",
+      "PackagePath": "staticwebassets\\css\\PointofSales.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\PointofSales.scss",
+      "PackagePath": "staticwebassets\\css\\PointofSales.scss"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\cropper.css",
+      "PackagePath": "staticwebassets\\css\\cropper.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\cropper.min.css",
+      "PackagePath": "staticwebassets\\css\\cropper.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\fonts\\ew.eot",
+      "PackagePath": "staticwebassets\\css\\fonts\\ew.eot"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\fonts\\ew.svg",
+      "PackagePath": "staticwebassets\\css\\fonts\\ew.svg"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\fonts\\ew.ttf",
+      "PackagePath": "staticwebassets\\css\\fonts\\ew.ttf"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\fonts\\ew.woff",
+      "PackagePath": "staticwebassets\\css\\fonts\\ew.woff"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\jquery.fileupload-ui.css",
+      "PackagePath": "staticwebassets\\css\\jquery.fileupload-ui.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\jquery.fileupload.css",
+      "PackagePath": "staticwebassets\\css\\jquery.fileupload.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\query-builder.css",
+      "PackagePath": "staticwebassets\\css\\query-builder.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\query-builder.min.css",
+      "PackagePath": "staticwebassets\\css\\query-builder.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\query-builder.min.css.map",
+      "PackagePath": "staticwebassets\\css\\query-builder.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\query-builder.scss",
+      "PackagePath": "staticwebassets\\css\\query-builder.scss"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\select2-bootstrap5.css",
+      "PackagePath": "staticwebassets\\css\\select2-bootstrap5.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\select2-bootstrap5.min.css",
+      "PackagePath": "staticwebassets\\css\\select2-bootstrap5.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\select2.css",
+      "PackagePath": "staticwebassets\\css\\select2.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\select2.min.css",
+      "PackagePath": "staticwebassets\\css\\select2.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\tabulator_bootstrap5.css",
+      "PackagePath": "staticwebassets\\css\\tabulator_bootstrap5.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\tabulator_bootstrap5.min.css",
+      "PackagePath": "staticwebassets\\css\\tabulator_bootstrap5.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\tabulator_bootstrap5.min.css.map",
+      "PackagePath": "staticwebassets\\css\\tabulator_bootstrap5.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\tabulator_bootstrap5.scss",
+      "PackagePath": "staticwebassets\\css\\tabulator_bootstrap5.scss"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\tempus-dominus.css",
+      "PackagePath": "staticwebassets\\css\\tempus-dominus.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\tempus-dominus.min.css",
+      "PackagePath": "staticwebassets\\css\\tempus-dominus.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\tempus-dominus.min.css.map",
+      "PackagePath": "staticwebassets\\css\\tempus-dominus.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\css\\tempus-dominus.scss",
+      "PackagePath": "staticwebassets\\css\\tempus-dominus.scss"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\MobileDetect.json",
+      "PackagePath": "staticwebassets\\js\\MobileDetect.json"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\chart.umd.js",
+      "PackagePath": "staticwebassets\\js\\chart.umd.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\chart.umd.js.map",
+      "PackagePath": "staticwebassets\\js\\chart.umd.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\chartjs-adapter-luxon.umd.js",
+      "PackagePath": "staticwebassets\\js\\chartjs-adapter-luxon.umd.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\chartjs-adapter-luxon.umd.min.js",
+      "PackagePath": "staticwebassets\\js\\chartjs-adapter-luxon.umd.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\chartjs-plugin-annotation.js",
+      "PackagePath": "staticwebassets\\js\\chartjs-plugin-annotation.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\chartjs-plugin-annotation.min.js",
+      "PackagePath": "staticwebassets\\js\\chartjs-plugin-annotation.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\chartjs-plugin-datalabels.js",
+      "PackagePath": "staticwebassets\\js\\chartjs-plugin-datalabels.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\chartjs-plugin-datalabels.min.js",
+      "PackagePath": "staticwebassets\\js\\chartjs-plugin-datalabels.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\chartjs-plugin-stacked100.js",
+      "PackagePath": "staticwebassets\\js\\chartjs-plugin-stacked100.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\cropper.js",
+      "PackagePath": "staticwebassets\\js\\cropper.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\cropper.min.js",
+      "PackagePath": "staticwebassets\\js\\cropper.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\element-internals-polyfill.js",
+      "PackagePath": "staticwebassets\\js\\element-internals-polyfill.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\element-internals-polyfill.min.js",
+      "PackagePath": "staticwebassets\\js\\element-internals-polyfill.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\element-internals-polyfill.min.js.map",
+      "PackagePath": "staticwebassets\\js\\element-internals-polyfill.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\ew.js",
+      "PackagePath": "staticwebassets\\js\\ew.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\ew.min.js",
+      "PackagePath": "staticwebassets\\js\\ew.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\ew.min.js.map",
+      "PackagePath": "staticwebassets\\js\\ew.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\ewchart.js",
+      "PackagePath": "staticwebassets\\js\\ewchart.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\ewcore.js",
+      "PackagePath": "staticwebassets\\js\\ewcore.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\ewcore.min.js",
+      "PackagePath": "staticwebassets\\js\\ewcore.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\ewcore.min.js.map",
+      "PackagePath": "staticwebassets\\js\\ewcore.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\ewdatetimepicker.js",
+      "PackagePath": "staticwebassets\\js\\ewdatetimepicker.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\ewdatetimepicker.min.js",
+      "PackagePath": "staticwebassets\\js\\ewdatetimepicker.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\ewdatetimepicker.min.js.map",
+      "PackagePath": "staticwebassets\\js\\ewdatetimepicker.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\jquery-ui.js",
+      "PackagePath": "staticwebassets\\js\\jquery-ui.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\jquery-ui.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery-ui.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\jquery.js",
+      "PackagePath": "staticwebassets\\js\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\jquery.min.map",
+      "PackagePath": "staticwebassets\\js\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\jqueryfileupload.js",
+      "PackagePath": "staticwebassets\\js\\jqueryfileupload.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\jqueryfileupload.min.js",
+      "PackagePath": "staticwebassets\\js\\jqueryfileupload.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\jqueryfileupload.min.js.map",
+      "PackagePath": "staticwebassets\\js\\jqueryfileupload.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\jsrender.js",
+      "PackagePath": "staticwebassets\\js\\jsrender.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\jsrender.min.js",
+      "PackagePath": "staticwebassets\\js\\jsrender.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\jsrender.min.js.map",
+      "PackagePath": "staticwebassets\\js\\jsrender.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\load-image.all.js",
+      "PackagePath": "staticwebassets\\js\\load-image.all.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\load-image.all.min.js",
+      "PackagePath": "staticwebassets\\js\\load-image.all.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\load-image.all.min.js.map",
+      "PackagePath": "staticwebassets\\js\\load-image.all.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\locales.json",
+      "PackagePath": "staticwebassets\\js\\locales.json"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\luxon.js",
+      "PackagePath": "staticwebassets\\js\\luxon.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\luxon.js.map",
+      "PackagePath": "staticwebassets\\js\\luxon.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\luxon.min.js",
+      "PackagePath": "staticwebassets\\js\\luxon.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\luxon.min.js.map",
+      "PackagePath": "staticwebassets\\js\\luxon.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\mobile-detect.js",
+      "PackagePath": "staticwebassets\\js\\mobile-detect.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\mobile-detect.min.js",
+      "PackagePath": "staticwebassets\\js\\mobile-detect.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\pGenerator.jquery.js",
+      "PackagePath": "staticwebassets\\js\\pGenerator.jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\pGenerator.jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\pGenerator.jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\pGenerator.jquery.min.js.map",
+      "PackagePath": "staticwebassets\\js\\pGenerator.jquery.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\pStrength.jquery.js",
+      "PackagePath": "staticwebassets\\js\\pStrength.jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\pStrength.jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\pStrength.jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\pStrength.jquery.min.js.map",
+      "PackagePath": "staticwebassets\\js\\pStrength.jquery.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\pace.js",
+      "PackagePath": "staticwebassets\\js\\pace.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\pace.min.js",
+      "PackagePath": "staticwebassets\\js\\pace.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\pdfobject.js",
+      "PackagePath": "staticwebassets\\js\\pdfobject.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\pdfobject.min.js",
+      "PackagePath": "staticwebassets\\js\\pdfobject.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\popper.js",
+      "PackagePath": "staticwebassets\\js\\popper.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\popper.js.map",
+      "PackagePath": "staticwebassets\\js\\popper.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\popper.min.js",
+      "PackagePath": "staticwebassets\\js\\popper.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\popper.min.js.map",
+      "PackagePath": "staticwebassets\\js\\popper.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\purify.js",
+      "PackagePath": "staticwebassets\\js\\purify.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\purify.js.map",
+      "PackagePath": "staticwebassets\\js\\purify.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\purify.min.js",
+      "PackagePath": "staticwebassets\\js\\purify.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\purify.min.js.map",
+      "PackagePath": "staticwebassets\\js\\purify.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\query-builder.js",
+      "PackagePath": "staticwebassets\\js\\query-builder.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\query-builder.min.js",
+      "PackagePath": "staticwebassets\\js\\query-builder.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\query-builder.min.js.map",
+      "PackagePath": "staticwebassets\\js\\query-builder.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\select2.full.js",
+      "PackagePath": "staticwebassets\\js\\select2.full.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\select2.full.min.js",
+      "PackagePath": "staticwebassets\\js\\select2.full.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\select2.full.min.js.map",
+      "PackagePath": "staticwebassets\\js\\select2.full.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\sweetalert2.all.js",
+      "PackagePath": "staticwebassets\\js\\sweetalert2.all.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\sweetalert2.all.min.js",
+      "PackagePath": "staticwebassets\\js\\sweetalert2.all.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\tabulator.js",
+      "PackagePath": "staticwebassets\\js\\tabulator.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\tabulator.js.map",
+      "PackagePath": "staticwebassets\\js\\tabulator.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\tabulator.min.js",
+      "PackagePath": "staticwebassets\\js\\tabulator.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\tabulator.min.js.map",
+      "PackagePath": "staticwebassets\\js\\tabulator.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\tempus-dominus.js",
+      "PackagePath": "staticwebassets\\js\\tempus-dominus.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\tempus-dominus.min.js",
+      "PackagePath": "staticwebassets\\js\\tempus-dominus.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\tempus-dominus.min.js.map",
+      "PackagePath": "staticwebassets\\js\\tempus-dominus.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\tippy-bundle.umd.js",
+      "PackagePath": "staticwebassets\\js\\tippy-bundle.umd.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\tippy-bundle.umd.js.map",
+      "PackagePath": "staticwebassets\\js\\tippy-bundle.umd.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\tippy-bundle.umd.min.js",
+      "PackagePath": "staticwebassets\\js\\tippy-bundle.umd.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\tippy-bundle.umd.min.js.map",
+      "PackagePath": "staticwebassets\\js\\tippy-bundle.umd.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\typeahead.jquery.js",
+      "PackagePath": "staticwebassets\\js\\typeahead.jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\typeahead.jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\typeahead.jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\typeahead.jquery.min.js.map",
+      "PackagePath": "staticwebassets\\js\\typeahead.jquery.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\userevent.js",
+      "PackagePath": "staticwebassets\\js\\userevent.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\userfn.js",
+      "PackagePath": "staticwebassets\\js\\userfn.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\userpriv.js",
+      "PackagePath": "staticwebassets\\js\\userpriv.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\userpriv.min.js",
+      "PackagePath": "staticwebassets\\js\\userpriv.min.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\js\\userpriv.min.js.map",
+      "PackagePath": "staticwebassets\\js\\userpriv.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\lang\\PointofSales.en-US.xml",
+      "PackagePath": "staticwebassets\\lang\\PointofSales.en-US.xml"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\lang\\english.en-US.xml",
+      "PackagePath": "staticwebassets\\lang\\english.en-US.xml"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\lang\\languages.xml",
+      "PackagePath": "staticwebassets\\lang\\languages.xml"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\package-lock.json",
+      "PackagePath": "staticwebassets\\package-lock.json"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\package.json",
+      "PackagePath": "staticwebassets\\package.json"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\css\\all.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\all.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\css\\all.min.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\all.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\css\\brands.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\brands.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\css\\brands.min.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\brands.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\css\\fontawesome.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\fontawesome.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\css\\fontawesome.min.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\fontawesome.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\css\\regular.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\regular.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\css\\regular.min.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\regular.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\css\\solid.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\solid.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\css\\solid.min.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\solid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\css\\svg-with-js.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\svg-with-js.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\css\\svg-with-js.min.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\svg-with-js.min.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\webfonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\webfonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\webfonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\webfonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\webfonts\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\webfonts\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\webfonts\\fa-regular-400.woff2",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\webfonts\\fa-regular-400.woff2"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\webfonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\webfonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\plugins\\fontawesome-free\\webfonts\\fa-solid-900.woff2",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\webfonts\\fa-solid-900.woff2"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\favicon-16x16.png",
+      "PackagePath": "staticwebassets\\swagger\\favicon-16x16.png"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\favicon-32x32.png",
+      "PackagePath": "staticwebassets\\swagger\\favicon-32x32.png"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\index.css",
+      "PackagePath": "staticwebassets\\swagger\\index.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\index.html",
+      "PackagePath": "staticwebassets\\swagger\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\oauth2-redirect.html",
+      "PackagePath": "staticwebassets\\swagger\\oauth2-redirect.html"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\swagger-initializer.js",
+      "PackagePath": "staticwebassets\\swagger\\swagger-initializer.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\swagger-ui-bundle.js",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui-bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\swagger-ui-bundle.js.map",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui-bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\swagger-ui-es-bundle-core.js",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui-es-bundle-core.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\swagger-ui-es-bundle-core.js.map",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui-es-bundle-core.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\swagger-ui-es-bundle.js",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui-es-bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\swagger-ui-es-bundle.js.map",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui-es-bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\swagger-ui-standalone-preset.js",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui-standalone-preset.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\swagger-ui-standalone-preset.js.map",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui-standalone-preset.js.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\swagger-ui.css",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui.css"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\swagger-ui.css.map",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui.css.map"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\swagger-ui.js",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui.js"
+    },
+    {
+      "Id": "C:\\Users\\aryac\\Documents\\ASPNETMaker\\WebSites\\PointOfSales\\wwwroot\\swagger\\swagger-ui.js.map",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui.js.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ASPNETMaker2024.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ASPNETMaker2024.props",
+      "PackagePath": "build\\ASPNETMaker2024.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ASPNETMaker2024.props",
+      "PackagePath": "buildMultiTargeting\\ASPNETMaker2024.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ASPNETMaker2024.props",
+      "PackagePath": "buildTransitive\\ASPNETMaker2024.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

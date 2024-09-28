@@ -1,0 +1,282 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (soItemList.ActionResult is EmptyResult) // Terminate page
+        return;
+
+    // Layout
+    Layout = soItemList.UseLayout ? "_Layout" : "";
+}
+@if (!soItemList.IsExport()) {
+<script>
+var currentTable = @Html.Raw(ConvertToJson(soItemList.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { so_item: currentTable } });
+var currentPageID = ew.PAGE_ID = "list";
+var currentForm;
+var @(soItemList.FormName);
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery;
+    let fields = currentTable.fields;
+
+    // Form object
+    let form = new ew.FormBuilder()
+        .setId("@(soItemList.FormName)")
+        .setPageId("list")
+        .setSubmitWithFetch(@(soItemList.UseAjaxActions ? "true" : "false"))
+        .setFormKeyCountName("@(soItemList.FormKeyCountName)")
+        .build();
+    window[form.id] = form;
+    currentForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<script>
+loadjs.ready("head", function() {
+    // Write your client script here, no need to add script tags.
+});
+</script>
+}
+@if (!soItemList.IsExport()) {
+<div class="btn-toolbar ew-toolbar">
+@if (soItemList.TotalRecords > 0 && soItemList.ExportOptions.Visible) {
+    soItemList.ExportOptions.Render("body");
+}
+@if (soItemList.ImportOptions.Visible) {
+    soItemList.ImportOptions.Render("body");
+}
+@if (soItemList.SearchOptions.Visible) {
+    soItemList.SearchOptions.Render("body");
+}
+@if (soItemList.FilterOptions.Visible) {
+    soItemList.FilterOptions.Render("body");
+}
+</div>
+}
+@if (!soItemList.IsModal) {
+<form name="fso_itemsrch" id="fso_itemsrch" class="ew-form ew-ext-search-form" action="@AppPath(CurrentPageName())" novalidate autocomplete="off">
+<div id="fso_itemsrch_search_panel" class="mb-2 mb-sm-0 @(soItemList.SearchPanelClass)"><!-- .ew-search-panel -->
+<script>
+var currentTable = @Html.Raw(ConvertToJson(soItemList.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { so_item: currentTable } });
+var currentForm;
+var fso_itemsrch, currentSearchForm, currentAdvancedSearchForm;
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery,
+        fields = currentTable.fields;
+
+    // Form object for search
+    let form = new ew.FormBuilder()
+        .setId("fso_itemsrch")
+        .setPageId("list")
+@if (soItemList.UseAjaxActions) {
+        <text>.setSubmitWithFetch(true)</text>
+}
+
+        // Dynamic selection lists
+        .setLists({
+        })
+
+        // Filters
+        .setFilterList(@Html.Raw(soItemList.GetFilterList()))
+        .build();
+    window[form.id] = form;
+    currentSearchForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<input type="hidden" name="cmd" value="search">
+@if (!soItemList.IsExport() && Empty(soItemList.CurrentAction) && soItemList.HasSearchFields()) { @* Show search form (begin) *@
+<div class="ew-extended-search container-fluid ps-2">
+<div class="row mb-0">
+    <div class="col-sm-auto px-0 pe-sm-2">
+        <div class="ew-basic-search input-group">
+            <input type="search" name="@(Config.TableBasicSearch)" id="@(Config.TableBasicSearch)" class="form-control ew-basic-search-keyword" value="@Html.Raw(HtmlEncode(soItemList.BasicSearch.SessionKeyword))" placeholder="@(HtmlEncode(Language.Phrase("Search")))" aria-label="@(HtmlEncode(Language.Phrase("Search")))">
+            <input type="hidden" name="@(Config.TableBasicSearchType)" id="@(Config.TableBasicSearchType)" class="ew-basic-search-type" value="@(HtmlEncode(soItemList.BasicSearch.SessionType))">
+            <button type="button" data-bs-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" aria-haspopup="true" aria-expanded="false">
+                <span id="searchtype">@Html.Raw(soItemList.BasicSearch.TypeNameShort)</span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end">
+                <button type="button" class="dropdown-item@(soItemList.BasicSearch.SessionType == "" ? " active" : "")" form="fso_itemsrch" data-ew-action="search-type">@Html.Raw(Language.Phrase("QuickSearchAuto"))</button>
+                <button type="button" class="dropdown-item@(soItemList.BasicSearch.SessionType == "=" ? " active" : "")" form="fso_itemsrch" data-ew-action="search-type" data-search-type="=">@Html.Raw(Language.Phrase("QuickSearchExact"))</button>
+                <button type="button" class="dropdown-item@(soItemList.BasicSearch.SessionType == "AND" ? " active" : "")" form="fso_itemsrch" data-ew-action="search-type" data-search-type="AND">@Html.Raw(Language.Phrase("QuickSearchAll"))</button>
+                <button type="button" class="dropdown-item@(soItemList.BasicSearch.SessionType == "OR" ? " active" : "")" form="fso_itemsrch" data-ew-action="search-type" data-search-type="OR">@Html.Raw(Language.Phrase("QuickSearchAny"))</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-auto mb-3">
+        <button class="btn btn-primary" name="btn-submit" id="btn-submit" type="submit">@Html.Raw(Language.Phrase("SearchBtn"))</button>
+    </div>
+</div>
+</div><!-- /.ew-extended-search -->
+} @* Show search form (end) *@
+</div><!-- /.ew-search-panel -->
+</form>
+}
+@soItemList.ShowPageHeader()
+@soItemList.ShowMessages()
+<main class="list @(soItemList.TotalRecords == 0 && !soItemList.IsAdd ? " ew-no-record" : "")">
+<div id="ew-header-options">
+    @soItemList.HeaderOptions.RenderBody()
+</div>
+<div id="ew-list">
+@if (soItemList.TotalRecords > 0 || !Empty(soItemList.CurrentAction)) {
+<div class="card ew-card ew-grid@(soItemList.IsAddOrEdit ? " ew-grid-add-edit" : "") @(soItemList.TableGridClass)">
+<form name="@(soItemList.FormName)" id="@(soItemList.FormName)" class="ew-form ew-list-form" action="@AppPath(soItemList.PageName)" method="post" novalidate autocomplete="off">
+@if (CurrentPage?.CheckToken ?? false) {
+    <input type="hidden" name="@Config.TokenNameKey" value="@Config.TokenName"><!-- CSRF token name -->
+    @Html.AntiForgeryToken()
+}
+@if (soItemList.IsModal) {
+<input type="hidden" name="modal" value="1">
+}
+<div id="gmp_so_item" class="card-body ew-grid-middle-panel @(soItemList.TableContainerClass)" style="@(soItemList.TableContainerStyle)">
+@if (soItemList.TotalRecords > 0 || soItemList.IsGridEdit || soItemList.IsMultiEdit) {
+<table id="tbl_so_itemlist" class="@(soItemList.TableClass)"><!-- .ew-table -->
+<thead>
+    <tr class="ew-table-header">
+@{
+    // Header row
+    soItemList.RowType = RowType.Header;
+
+    // Render list options
+    await soItemList.RenderListOptions();
+}
+@* Render list options (header, left) *@
+@soItemList.ListOptions.RenderHeader("left")
+@if (soItemList.SO_ITEM_ID.Visible) { // soItemList.SO_ITEM_ID.Visible (begin)
+        <th data-name="SO_ITEM_ID" class="@(soItemList.SO_ITEM_ID.HeaderCellClass)"><div id="elh_so_item_SO_ITEM_ID" class="so_item_SO_ITEM_ID">@Html.Raw(soItemList.RenderFieldHeader(soItemList.SO_ITEM_ID))</div></th>
+} @* soItemList.SO_ITEM_ID.Visible (end) *@
+@if (soItemList.SO_ORDER_ID.Visible) { // soItemList.SO_ORDER_ID.Visible (begin)
+        <th data-name="SO_ORDER_ID" class="@(soItemList.SO_ORDER_ID.HeaderCellClass)"><div id="elh_so_item_SO_ORDER_ID" class="so_item_SO_ORDER_ID">@Html.Raw(soItemList.RenderFieldHeader(soItemList.SO_ORDER_ID))</div></th>
+} @* soItemList.SO_ORDER_ID.Visible (end) *@
+@if (soItemList.ITEM_NAME.Visible) { // soItemList.ITEM_NAME.Visible (begin)
+        <th data-name="ITEM_NAME" class="@(soItemList.ITEM_NAME.HeaderCellClass)"><div id="elh_so_item_ITEM_NAME" class="so_item_ITEM_NAME">@Html.Raw(soItemList.RenderFieldHeader(soItemList.ITEM_NAME))</div></th>
+} @* soItemList.ITEM_NAME.Visible (end) *@
+@if (soItemList.QUANTITY.Visible) { // soItemList.QUANTITY.Visible (begin)
+        <th data-name="QUANTITY" class="@(soItemList.QUANTITY.HeaderCellClass)"><div id="elh_so_item_QUANTITY" class="so_item_QUANTITY">@Html.Raw(soItemList.RenderFieldHeader(soItemList.QUANTITY))</div></th>
+} @* soItemList.QUANTITY.Visible (end) *@
+@if (soItemList.PRICE.Visible) { // soItemList.PRICE.Visible (begin)
+        <th data-name="PRICE" class="@(soItemList.PRICE.HeaderCellClass)"><div id="elh_so_item_PRICE" class="so_item_PRICE">@Html.Raw(soItemList.RenderFieldHeader(soItemList.PRICE))</div></th>
+} @* soItemList.PRICE.Visible (end) *@
+@* Render list options (header, right) *@
+@soItemList.ListOptions.RenderHeader("right")
+    </tr>
+</thead>
+<tbody data-page="@(soItemList.PageNumber)">
+@{
+    await soItemList.SetupGrid();
+    bool eof = soItemList.Recordset == null; // DN
+}
+@while (soItemList.RecordCount < soItemList.StopRecord || SameString(soItemList.RowIndex, "$rowindex$")) { // Begin While
+    if (!eof && !SameString(soItemList.RowIndex, "$rowindex$") &&
+        (!soItemList.IsGridAdd || soItemList.CurrentMode == "copy") &&
+        (!((soItemList.IsCopy || soItemList.IsAdd) && soItemList.RowIndex is int rowIndex && rowIndex == 0))) // DN
+        eof = !await soItemList.Recordset.ReadAsync();
+    soItemList.RecordCount++;
+    if (soItemList.RecordCount >= soItemList.StartRecord) {
+        await soItemList.SetupRow();
+    <tr @Html.Raw(soItemList.RowAttributes)>
+    @* Render list options (body, left) *@
+    @soItemList.ListOptions.RenderBody("left", soItemList.RowCount)
+    @if (soItemList.SO_ITEM_ID.Visible) { // soItemList.SO_ITEM_ID.Visible (begin)
+        <td data-name="SO_ITEM_ID" @Html.Raw(soItemList.SO_ITEM_ID.CellAttributes)>
+<span id="el@(soItemList.RowIndex == "$rowindex$" ? "$rowindex$" : soItemList.RowCount)_so_item_SO_ITEM_ID" class="el_so_item_SO_ITEM_ID">
+<span @Html.Raw(soItemList.SO_ITEM_ID.ViewAttributes)>
+@Html.Raw(soItemList.SO_ITEM_ID.GetViewValue())</span>
+</span>
+</td>
+    } @* soItemList.SO_ITEM_ID.Visible (end) *@
+    @if (soItemList.SO_ORDER_ID.Visible) { // soItemList.SO_ORDER_ID.Visible (begin)
+        <td data-name="SO_ORDER_ID" @Html.Raw(soItemList.SO_ORDER_ID.CellAttributes)>
+<span id="el@(soItemList.RowIndex == "$rowindex$" ? "$rowindex$" : soItemList.RowCount)_so_item_SO_ORDER_ID" class="el_so_item_SO_ORDER_ID">
+<span @Html.Raw(soItemList.SO_ORDER_ID.ViewAttributes)>
+@Html.Raw(soItemList.SO_ORDER_ID.GetViewValue())</span>
+</span>
+</td>
+    } @* soItemList.SO_ORDER_ID.Visible (end) *@
+    @if (soItemList.ITEM_NAME.Visible) { // soItemList.ITEM_NAME.Visible (begin)
+        <td data-name="ITEM_NAME" @Html.Raw(soItemList.ITEM_NAME.CellAttributes)>
+<span id="el@(soItemList.RowIndex == "$rowindex$" ? "$rowindex$" : soItemList.RowCount)_so_item_ITEM_NAME" class="el_so_item_ITEM_NAME">
+<span @Html.Raw(soItemList.ITEM_NAME.ViewAttributes)>
+@Html.Raw(soItemList.ITEM_NAME.GetViewValue())</span>
+</span>
+</td>
+    } @* soItemList.ITEM_NAME.Visible (end) *@
+    @if (soItemList.QUANTITY.Visible) { // soItemList.QUANTITY.Visible (begin)
+        <td data-name="QUANTITY" @Html.Raw(soItemList.QUANTITY.CellAttributes)>
+<span id="el@(soItemList.RowIndex == "$rowindex$" ? "$rowindex$" : soItemList.RowCount)_so_item_QUANTITY" class="el_so_item_QUANTITY">
+<span @Html.Raw(soItemList.QUANTITY.ViewAttributes)>
+@Html.Raw(soItemList.QUANTITY.GetViewValue())</span>
+</span>
+</td>
+    } @* soItemList.QUANTITY.Visible (end) *@
+    @if (soItemList.PRICE.Visible) { // soItemList.PRICE.Visible (begin)
+        <td data-name="PRICE" @Html.Raw(soItemList.PRICE.CellAttributes)>
+<span id="el@(soItemList.RowIndex == "$rowindex$" ? "$rowindex$" : soItemList.RowCount)_so_item_PRICE" class="el_so_item_PRICE">
+<span @Html.Raw(soItemList.PRICE.ViewAttributes)>
+@Html.Raw(soItemList.PRICE.GetViewValue())</span>
+</span>
+</td>
+    } @* soItemList.PRICE.Visible (end) *@
+    @* Render list options (body, right) *@
+    @soItemList.ListOptions.RenderBody("right", soItemList.RowCount)
+    </tr>
+    } @* End if *@
+
+    // Reset for template row
+    if (SameString(soItemList.RowIndex, "$rowindex$"))
+        soItemList.RowIndex = 0;
+
+    // Reset inline add/copy row
+    if ((soItemList.IsCopy || soItemList.IsAdd) && soItemList.RowIndex is int rowIndex2 && rowIndex2 == 0)
+        soItemList.RowIndex = 1;
+} @* End While *@
+</tbody>
+</table><!-- /.ew-table -->
+} @* End If TotalRecords > 0 *@
+</div><!-- /.ew-grid-middle-panel -->
+@if (Empty(soItemList.CurrentAction) && !soItemList.UseAjaxActions) {
+<input type="hidden" name="action" id="action" value="">
+}
+</form><!-- /.ew-list-form -->
+@{ soItemList.CloseRecordset(); }
+@if (!soItemList.IsExport()) {
+<div class="card-footer ew-grid-lower-panel">
+@if (!soItemList.IsGridAdd && !(soItemList.IsGridEdit && soItemList.ModalGridEdit) && !soItemList.IsMultiEdit) {
+@Html.Raw(soItemList.Pager.Render())
+}
+<div class="ew-list-other-options">
+@soItemList.OtherOptions.RenderBody("bottom")
+</div>
+</div>
+}
+</div><!-- /.ew-grid -->
+} else { // Show other options
+<div class="ew-list-other-options">
+@soItemList.OtherOptions.ForEach(opt => opt.ButtonClass = "").RenderBody()
+</div>
+}
+</div>
+<div id="ew-footer-options">
+    @soItemList.FooterOptions.RenderBody()
+</div>
+</main>
+@soItemList.ShowPageFooter()
+@Html.Raw(GetDebugMessage())
+@ElapsedTime()
+@if (!soItemList.IsExport()) {
+<script>
+// Field event handlers
+loadjs.ready("head", function() {
+    ew.addEventHandlers("so_item");
+});
+</script>
+<script>
+loadjs.ready("load", function() {
+    // Write your table-specific startup script here
+    // document.write("page loaded");
+});
+</script>
+}

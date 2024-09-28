@@ -1,0 +1,119 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (soOrderView.ActionResult is EmptyResult) // Terminate page
+        return;
+
+    // Layout
+    Layout = soOrderView.UseLayout ? "_Layout" : "";
+}
+@if (!soOrderView.IsExport()) {
+<div class="btn-toolbar ew-toolbar">
+    @soOrderView.ExportOptions.RenderBody()
+    @soOrderView.OtherOptions.RenderBody()
+</div>
+}
+@soOrderView.ShowPageHeader()
+@soOrderView.ShowMessages()
+<main class="view">
+<form name="fso_orderview" id="fso_orderview" class="ew-form ew-view-form overlay-wrapper" action="@AppPath(CurrentPageName())" method="post" novalidate autocomplete="off">
+@if (!soOrderView.IsExport()) {
+<script>
+var currentTable = @Html.Raw(ConvertToJson(soOrderView.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { so_order: currentTable } });
+var currentPageID = ew.PAGE_ID = "view";
+var currentForm;
+var fso_orderview;
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery;
+    let fields = currentTable.fields;
+
+    // Form object
+    let form = new ew.FormBuilder()
+        .setId("fso_orderview")
+        .setPageId("view")
+        .build();
+    window[form.id] = form;
+    currentForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<script>
+loadjs.ready("head", function() {
+    // Write your client script here, no need to add script tags.
+});
+</script>
+}
+@if (CurrentPage?.CheckToken ?? false) {
+    <input type="hidden" name="@Config.TokenNameKey" value="@Config.TokenName"><!-- CSRF token name -->
+    @Html.AntiForgeryToken()
+}
+<input type="hidden" name="modal" value="@ConvertToInt(soOrderView.IsModal)">
+<table class="@(soOrderView.TableClass)">
+@if (soOrderView.SO_ORDER_ID.Visible) { // soOrderView.SO_ORDER_ID.Visible (begin)
+    <tr id="r_SO_ORDER_ID" @Html.Raw(soOrderView.SO_ORDER_ID.RowAttributes)>
+        <td class="@(soOrderView.TableLeftColumnClass)"><span id="elh_so_order_SO_ORDER_ID">@Html.Raw(soOrderView.SO_ORDER_ID.Caption)</span></td>
+        <td data-name="SO_ORDER_ID" @Html.Raw(soOrderView.SO_ORDER_ID.CellAttributes)>
+<span id="el_so_order_SO_ORDER_ID">
+<span @Html.Raw(soOrderView.SO_ORDER_ID.ViewAttributes)>
+@Html.Raw(soOrderView.SO_ORDER_ID.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* soOrderView.SO_ORDER_ID.Visible (end) *@
+@if (soOrderView.ORDER_NO.Visible) { // soOrderView.ORDER_NO.Visible (begin)
+    <tr id="r_ORDER_NO" @Html.Raw(soOrderView.ORDER_NO.RowAttributes)>
+        <td class="@(soOrderView.TableLeftColumnClass)"><span id="elh_so_order_ORDER_NO">@Html.Raw(soOrderView.ORDER_NO.Caption)</span></td>
+        <td data-name="ORDER_NO" @Html.Raw(soOrderView.ORDER_NO.CellAttributes)>
+<span id="el_so_order_ORDER_NO">
+<span @Html.Raw(soOrderView.ORDER_NO.ViewAttributes)>
+@Html.Raw(soOrderView.ORDER_NO.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* soOrderView.ORDER_NO.Visible (end) *@
+@if (soOrderView.ORDER_DATE.Visible) { // soOrderView.ORDER_DATE.Visible (begin)
+    <tr id="r_ORDER_DATE" @Html.Raw(soOrderView.ORDER_DATE.RowAttributes)>
+        <td class="@(soOrderView.TableLeftColumnClass)"><span id="elh_so_order_ORDER_DATE">@Html.Raw(soOrderView.ORDER_DATE.Caption)</span></td>
+        <td data-name="ORDER_DATE" @Html.Raw(soOrderView.ORDER_DATE.CellAttributes)>
+<span id="el_so_order_ORDER_DATE">
+<span @Html.Raw(soOrderView.ORDER_DATE.ViewAttributes)>
+@Html.Raw(soOrderView.ORDER_DATE.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* soOrderView.ORDER_DATE.Visible (end) *@
+@if (soOrderView.COM_CUSTOMER_ID.Visible) { // soOrderView.COM_CUSTOMER_ID.Visible (begin)
+    <tr id="r_COM_CUSTOMER_ID" @Html.Raw(soOrderView.COM_CUSTOMER_ID.RowAttributes)>
+        <td class="@(soOrderView.TableLeftColumnClass)"><span id="elh_so_order_COM_CUSTOMER_ID">@Html.Raw(soOrderView.COM_CUSTOMER_ID.Caption)</span></td>
+        <td data-name="COM_CUSTOMER_ID" @Html.Raw(soOrderView.COM_CUSTOMER_ID.CellAttributes)>
+<span id="el_so_order_COM_CUSTOMER_ID">
+<span @Html.Raw(soOrderView.COM_CUSTOMER_ID.ViewAttributes)>
+@Html.Raw(soOrderView.COM_CUSTOMER_ID.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* soOrderView.COM_CUSTOMER_ID.Visible (end) *@
+@if (soOrderView.ADDRESS.Visible) { // soOrderView.ADDRESS.Visible (begin)
+    <tr id="r_ADDRESS" @Html.Raw(soOrderView.ADDRESS.RowAttributes)>
+        <td class="@(soOrderView.TableLeftColumnClass)"><span id="elh_so_order_ADDRESS">@Html.Raw(soOrderView.ADDRESS.Caption)</span></td>
+        <td data-name="ADDRESS" @Html.Raw(soOrderView.ADDRESS.CellAttributes)>
+<span id="el_so_order_ADDRESS">
+<span @Html.Raw(soOrderView.ADDRESS.ViewAttributes)>
+@Html.Raw(soOrderView.ADDRESS.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* soOrderView.ADDRESS.Visible (end) *@
+</table>
+@{ soOrderView.CloseRecordset(); }
+</form>
+</main>
+@soOrderView.ShowPageFooter()
+@Html.Raw(GetDebugMessage())
+@ElapsedTime()
+@if (!soOrderView.IsExport()) {
+<script>
+loadjs.ready("load", function() {
+    // Write your table-specific startup script here
+    // document.write("page loaded");
+});
+</script>
+}

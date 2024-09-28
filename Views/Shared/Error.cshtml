@@ -1,0 +1,23 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (error.ActionResult is EmptyResult) // Terminate page
+        return;
+
+    // Layout
+    Layout = error.UseLayout ? "_Layout" : "";
+}
+<div class="error-page">
+    <div class="error-content">
+        <h3><i class="fa-solid fa-exclamation-triangle text-danger"></i> @Html.Raw(Language.Phrase("Error"))</h3>
+        <p>@CurrentPage.GetFailureMessage()</p>
+        @if (!Empty(CurrentPage.ExceptionPath)) {
+            <p>@CurrentPage.ExceptionPath</p>
+        }
+    </div>
+    <!-- /.error-content -->
+</div>
+<!-- /.error-page -->
+@Html.Raw(GetDebugMessage())

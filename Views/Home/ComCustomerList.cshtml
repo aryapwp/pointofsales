@@ -1,0 +1,249 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (comCustomerList.ActionResult is EmptyResult) // Terminate page
+        return;
+
+    // Layout
+    Layout = comCustomerList.UseLayout ? "_Layout" : "";
+}
+@if (!comCustomerList.IsExport()) {
+<script>
+var currentTable = @Html.Raw(ConvertToJson(comCustomerList.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { com_customer: currentTable } });
+var currentPageID = ew.PAGE_ID = "list";
+var currentForm;
+var @(comCustomerList.FormName);
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery;
+    let fields = currentTable.fields;
+
+    // Form object
+    let form = new ew.FormBuilder()
+        .setId("@(comCustomerList.FormName)")
+        .setPageId("list")
+        .setSubmitWithFetch(@(comCustomerList.UseAjaxActions ? "true" : "false"))
+        .setFormKeyCountName("@(comCustomerList.FormKeyCountName)")
+        .build();
+    window[form.id] = form;
+    currentForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<script>
+loadjs.ready("head", function() {
+    // Write your client script here, no need to add script tags.
+});
+</script>
+}
+@if (!comCustomerList.IsExport()) {
+<div class="btn-toolbar ew-toolbar">
+@if (comCustomerList.TotalRecords > 0 && comCustomerList.ExportOptions.Visible) {
+    comCustomerList.ExportOptions.Render("body");
+}
+@if (comCustomerList.ImportOptions.Visible) {
+    comCustomerList.ImportOptions.Render("body");
+}
+@if (comCustomerList.SearchOptions.Visible) {
+    comCustomerList.SearchOptions.Render("body");
+}
+@if (comCustomerList.FilterOptions.Visible) {
+    comCustomerList.FilterOptions.Render("body");
+}
+</div>
+}
+@if (!comCustomerList.IsModal) {
+<form name="fcom_customersrch" id="fcom_customersrch" class="ew-form ew-ext-search-form" action="@AppPath(CurrentPageName())" novalidate autocomplete="off">
+<div id="fcom_customersrch_search_panel" class="mb-2 mb-sm-0 @(comCustomerList.SearchPanelClass)"><!-- .ew-search-panel -->
+<script>
+var currentTable = @Html.Raw(ConvertToJson(comCustomerList.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { com_customer: currentTable } });
+var currentForm;
+var fcom_customersrch, currentSearchForm, currentAdvancedSearchForm;
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery,
+        fields = currentTable.fields;
+
+    // Form object for search
+    let form = new ew.FormBuilder()
+        .setId("fcom_customersrch")
+        .setPageId("list")
+@if (comCustomerList.UseAjaxActions) {
+        <text>.setSubmitWithFetch(true)</text>
+}
+
+        // Dynamic selection lists
+        .setLists({
+        })
+
+        // Filters
+        .setFilterList(@Html.Raw(comCustomerList.GetFilterList()))
+        .build();
+    window[form.id] = form;
+    currentSearchForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<input type="hidden" name="cmd" value="search">
+@if (!comCustomerList.IsExport() && Empty(comCustomerList.CurrentAction) && comCustomerList.HasSearchFields()) { @* Show search form (begin) *@
+<div class="ew-extended-search container-fluid ps-2">
+<div class="row mb-0">
+    <div class="col-sm-auto px-0 pe-sm-2">
+        <div class="ew-basic-search input-group">
+            <input type="search" name="@(Config.TableBasicSearch)" id="@(Config.TableBasicSearch)" class="form-control ew-basic-search-keyword" value="@Html.Raw(HtmlEncode(comCustomerList.BasicSearch.SessionKeyword))" placeholder="@(HtmlEncode(Language.Phrase("Search")))" aria-label="@(HtmlEncode(Language.Phrase("Search")))">
+            <input type="hidden" name="@(Config.TableBasicSearchType)" id="@(Config.TableBasicSearchType)" class="ew-basic-search-type" value="@(HtmlEncode(comCustomerList.BasicSearch.SessionType))">
+            <button type="button" data-bs-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" aria-haspopup="true" aria-expanded="false">
+                <span id="searchtype">@Html.Raw(comCustomerList.BasicSearch.TypeNameShort)</span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end">
+                <button type="button" class="dropdown-item@(comCustomerList.BasicSearch.SessionType == "" ? " active" : "")" form="fcom_customersrch" data-ew-action="search-type">@Html.Raw(Language.Phrase("QuickSearchAuto"))</button>
+                <button type="button" class="dropdown-item@(comCustomerList.BasicSearch.SessionType == "=" ? " active" : "")" form="fcom_customersrch" data-ew-action="search-type" data-search-type="=">@Html.Raw(Language.Phrase("QuickSearchExact"))</button>
+                <button type="button" class="dropdown-item@(comCustomerList.BasicSearch.SessionType == "AND" ? " active" : "")" form="fcom_customersrch" data-ew-action="search-type" data-search-type="AND">@Html.Raw(Language.Phrase("QuickSearchAll"))</button>
+                <button type="button" class="dropdown-item@(comCustomerList.BasicSearch.SessionType == "OR" ? " active" : "")" form="fcom_customersrch" data-ew-action="search-type" data-search-type="OR">@Html.Raw(Language.Phrase("QuickSearchAny"))</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-auto mb-3">
+        <button class="btn btn-primary" name="btn-submit" id="btn-submit" type="submit">@Html.Raw(Language.Phrase("SearchBtn"))</button>
+    </div>
+</div>
+</div><!-- /.ew-extended-search -->
+} @* Show search form (end) *@
+</div><!-- /.ew-search-panel -->
+</form>
+}
+@comCustomerList.ShowPageHeader()
+@comCustomerList.ShowMessages()
+<main class="list @(comCustomerList.TotalRecords == 0 && !comCustomerList.IsAdd ? " ew-no-record" : "")">
+<div id="ew-header-options">
+    @comCustomerList.HeaderOptions.RenderBody()
+</div>
+<div id="ew-list">
+@if (comCustomerList.TotalRecords > 0 || !Empty(comCustomerList.CurrentAction)) {
+<div class="card ew-card ew-grid@(comCustomerList.IsAddOrEdit ? " ew-grid-add-edit" : "") @(comCustomerList.TableGridClass)">
+<form name="@(comCustomerList.FormName)" id="@(comCustomerList.FormName)" class="ew-form ew-list-form" action="@AppPath(comCustomerList.PageName)" method="post" novalidate autocomplete="off">
+@if (CurrentPage?.CheckToken ?? false) {
+    <input type="hidden" name="@Config.TokenNameKey" value="@Config.TokenName"><!-- CSRF token name -->
+    @Html.AntiForgeryToken()
+}
+@if (comCustomerList.IsModal) {
+<input type="hidden" name="modal" value="1">
+}
+<div id="gmp_com_customer" class="card-body ew-grid-middle-panel @(comCustomerList.TableContainerClass)" style="@(comCustomerList.TableContainerStyle)">
+@if (comCustomerList.TotalRecords > 0 || comCustomerList.IsGridEdit || comCustomerList.IsMultiEdit) {
+<table id="tbl_com_customerlist" class="@(comCustomerList.TableClass)"><!-- .ew-table -->
+<thead>
+    <tr class="ew-table-header">
+@{
+    // Header row
+    comCustomerList.RowType = RowType.Header;
+
+    // Render list options
+    await comCustomerList.RenderListOptions();
+}
+@* Render list options (header, left) *@
+@comCustomerList.ListOptions.RenderHeader("left")
+@if (comCustomerList.COM_CUSTOMER_ID.Visible) { // comCustomerList.COM_CUSTOMER_ID.Visible (begin)
+        <th data-name="COM_CUSTOMER_ID" class="@(comCustomerList.COM_CUSTOMER_ID.HeaderCellClass)"><div id="elh_com_customer_COM_CUSTOMER_ID" class="com_customer_COM_CUSTOMER_ID">@Html.Raw(comCustomerList.RenderFieldHeader(comCustomerList.COM_CUSTOMER_ID))</div></th>
+} @* comCustomerList.COM_CUSTOMER_ID.Visible (end) *@
+@if (comCustomerList.CUSTOMER_NAME.Visible) { // comCustomerList.CUSTOMER_NAME.Visible (begin)
+        <th data-name="CUSTOMER_NAME" class="@(comCustomerList.CUSTOMER_NAME.HeaderCellClass)"><div id="elh_com_customer_CUSTOMER_NAME" class="com_customer_CUSTOMER_NAME">@Html.Raw(comCustomerList.RenderFieldHeader(comCustomerList.CUSTOMER_NAME))</div></th>
+} @* comCustomerList.CUSTOMER_NAME.Visible (end) *@
+@* Render list options (header, right) *@
+@comCustomerList.ListOptions.RenderHeader("right")
+    </tr>
+</thead>
+<tbody data-page="@(comCustomerList.PageNumber)">
+@{
+    await comCustomerList.SetupGrid();
+    bool eof = comCustomerList.Recordset == null; // DN
+}
+@while (comCustomerList.RecordCount < comCustomerList.StopRecord || SameString(comCustomerList.RowIndex, "$rowindex$")) { // Begin While
+    if (!eof && !SameString(comCustomerList.RowIndex, "$rowindex$") &&
+        (!comCustomerList.IsGridAdd || comCustomerList.CurrentMode == "copy") &&
+        (!((comCustomerList.IsCopy || comCustomerList.IsAdd) && comCustomerList.RowIndex is int rowIndex && rowIndex == 0))) // DN
+        eof = !await comCustomerList.Recordset.ReadAsync();
+    comCustomerList.RecordCount++;
+    if (comCustomerList.RecordCount >= comCustomerList.StartRecord) {
+        await comCustomerList.SetupRow();
+    <tr @Html.Raw(comCustomerList.RowAttributes)>
+    @* Render list options (body, left) *@
+    @comCustomerList.ListOptions.RenderBody("left", comCustomerList.RowCount)
+    @if (comCustomerList.COM_CUSTOMER_ID.Visible) { // comCustomerList.COM_CUSTOMER_ID.Visible (begin)
+        <td data-name="COM_CUSTOMER_ID" @Html.Raw(comCustomerList.COM_CUSTOMER_ID.CellAttributes)>
+<span id="el@(comCustomerList.RowIndex == "$rowindex$" ? "$rowindex$" : comCustomerList.RowCount)_com_customer_COM_CUSTOMER_ID" class="el_com_customer_COM_CUSTOMER_ID">
+<span @Html.Raw(comCustomerList.COM_CUSTOMER_ID.ViewAttributes)>
+@Html.Raw(comCustomerList.COM_CUSTOMER_ID.GetViewValue())</span>
+</span>
+</td>
+    } @* comCustomerList.COM_CUSTOMER_ID.Visible (end) *@
+    @if (comCustomerList.CUSTOMER_NAME.Visible) { // comCustomerList.CUSTOMER_NAME.Visible (begin)
+        <td data-name="CUSTOMER_NAME" @Html.Raw(comCustomerList.CUSTOMER_NAME.CellAttributes)>
+<span id="el@(comCustomerList.RowIndex == "$rowindex$" ? "$rowindex$" : comCustomerList.RowCount)_com_customer_CUSTOMER_NAME" class="el_com_customer_CUSTOMER_NAME">
+<span @Html.Raw(comCustomerList.CUSTOMER_NAME.ViewAttributes)>
+@Html.Raw(comCustomerList.CUSTOMER_NAME.GetViewValue())</span>
+</span>
+</td>
+    } @* comCustomerList.CUSTOMER_NAME.Visible (end) *@
+    @* Render list options (body, right) *@
+    @comCustomerList.ListOptions.RenderBody("right", comCustomerList.RowCount)
+    </tr>
+    } @* End if *@
+
+    // Reset for template row
+    if (SameString(comCustomerList.RowIndex, "$rowindex$"))
+        comCustomerList.RowIndex = 0;
+
+    // Reset inline add/copy row
+    if ((comCustomerList.IsCopy || comCustomerList.IsAdd) && comCustomerList.RowIndex is int rowIndex2 && rowIndex2 == 0)
+        comCustomerList.RowIndex = 1;
+} @* End While *@
+</tbody>
+</table><!-- /.ew-table -->
+} @* End If TotalRecords > 0 *@
+</div><!-- /.ew-grid-middle-panel -->
+@if (Empty(comCustomerList.CurrentAction) && !comCustomerList.UseAjaxActions) {
+<input type="hidden" name="action" id="action" value="">
+}
+</form><!-- /.ew-list-form -->
+@{ comCustomerList.CloseRecordset(); }
+@if (!comCustomerList.IsExport()) {
+<div class="card-footer ew-grid-lower-panel">
+@if (!comCustomerList.IsGridAdd && !(comCustomerList.IsGridEdit && comCustomerList.ModalGridEdit) && !comCustomerList.IsMultiEdit) {
+@Html.Raw(comCustomerList.Pager.Render())
+}
+<div class="ew-list-other-options">
+@comCustomerList.OtherOptions.RenderBody("bottom")
+</div>
+</div>
+}
+</div><!-- /.ew-grid -->
+} else { // Show other options
+<div class="ew-list-other-options">
+@comCustomerList.OtherOptions.ForEach(opt => opt.ButtonClass = "").RenderBody()
+</div>
+}
+</div>
+<div id="ew-footer-options">
+    @comCustomerList.FooterOptions.RenderBody()
+</div>
+</main>
+@comCustomerList.ShowPageFooter()
+@Html.Raw(GetDebugMessage())
+@ElapsedTime()
+@if (!comCustomerList.IsExport()) {
+<script>
+// Field event handlers
+loadjs.ready("head", function() {
+    ew.addEventHandlers("com_customer");
+});
+</script>
+<script>
+loadjs.ready("load", function() {
+    // Write your table-specific startup script here
+    // document.write("page loaded");
+});
+</script>
+}

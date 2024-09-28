@@ -1,0 +1,141 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (soItemDelete.ActionResult is EmptyResult) // Terminate page
+        return;
+
+    // Layout
+    Layout = soItemDelete.UseLayout ? "_Layout" : "";
+}
+<script>
+var currentTable = @Html.Raw(ConvertToJson(soItemDelete.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { so_item: currentTable } });
+var currentPageID = ew.PAGE_ID = "delete";
+var currentForm;
+var fso_itemdelete;
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery;
+    let fields = currentTable.fields;
+
+    // Form object
+    let form = new ew.FormBuilder()
+        .setId("fso_itemdelete")
+        .setPageId("delete")
+        .build();
+    window[form.id] = form;
+    currentForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<script>
+loadjs.ready("head", function() {
+    // Write your client script here, no need to add script tags.
+});
+</script>
+@soItemDelete.ShowPageHeader()
+@soItemDelete.ShowMessages()
+<form name="fso_itemdelete" id="fso_itemdelete" class="ew-form ew-delete-form" action="@AppPath(CurrentPageName())" method="post" novalidate autocomplete="off">
+@if (CurrentPage?.CheckToken ?? false) {
+    <input type="hidden" name="@Config.TokenNameKey" value="@Config.TokenName"><!-- CSRF token name -->
+    @Html.AntiForgeryToken()
+}
+<input type="hidden" name="action" id="action" value="delete">
+@foreach (string key in soItemDelete.RecordKeys) {
+<input type="hidden" name="key_m[]" value="@key">
+}
+<div class="card ew-card ew-grid @(soItemDelete.TableGridClass)">
+<div class="card-body ew-grid-middle-panel @(soItemDelete.TableContainerClass)" style="@(soItemDelete.TableContainerStyle)">
+<table class="@(soItemDelete.TableClass)">
+    <thead>
+    <tr class="ew-table-header">
+@if (soItemDelete.SO_ITEM_ID.Visible) { // soItemDelete.SO_ITEM_ID.Visible (begin)
+        <th class="@Html.Raw(soItemDelete.SO_ITEM_ID.HeaderCellClass)"><span id="elh_so_item_SO_ITEM_ID" class="so_item_SO_ITEM_ID">@Html.Raw(soItemDelete.SO_ITEM_ID.Caption)</span></th>
+} @* soItemDelete.SO_ITEM_ID.Visible (end) *@
+@if (soItemDelete.SO_ORDER_ID.Visible) { // soItemDelete.SO_ORDER_ID.Visible (begin)
+        <th class="@Html.Raw(soItemDelete.SO_ORDER_ID.HeaderCellClass)"><span id="elh_so_item_SO_ORDER_ID" class="so_item_SO_ORDER_ID">@Html.Raw(soItemDelete.SO_ORDER_ID.Caption)</span></th>
+} @* soItemDelete.SO_ORDER_ID.Visible (end) *@
+@if (soItemDelete.ITEM_NAME.Visible) { // soItemDelete.ITEM_NAME.Visible (begin)
+        <th class="@Html.Raw(soItemDelete.ITEM_NAME.HeaderCellClass)"><span id="elh_so_item_ITEM_NAME" class="so_item_ITEM_NAME">@Html.Raw(soItemDelete.ITEM_NAME.Caption)</span></th>
+} @* soItemDelete.ITEM_NAME.Visible (end) *@
+@if (soItemDelete.QUANTITY.Visible) { // soItemDelete.QUANTITY.Visible (begin)
+        <th class="@Html.Raw(soItemDelete.QUANTITY.HeaderCellClass)"><span id="elh_so_item_QUANTITY" class="so_item_QUANTITY">@Html.Raw(soItemDelete.QUANTITY.Caption)</span></th>
+} @* soItemDelete.QUANTITY.Visible (end) *@
+@if (soItemDelete.PRICE.Visible) { // soItemDelete.PRICE.Visible (begin)
+        <th class="@Html.Raw(soItemDelete.PRICE.HeaderCellClass)"><span id="elh_so_item_PRICE" class="so_item_PRICE">@Html.Raw(soItemDelete.PRICE.Caption)</span></th>
+} @* soItemDelete.PRICE.Visible (end) *@
+    </tr>
+    </thead>
+    <tbody>
+@{ soItemDelete.RecordCount = 0; }
+@while (soItemDelete.Recordset != null && await soItemDelete.Recordset.ReadAsync()) { // DN
+    soItemDelete.RecordCount++;
+    soItemDelete.RowCount++;
+
+    // Set row properties
+    soItemDelete.ResetAttributes();
+    soItemDelete.RowType = RowType.View; // View
+
+    // Get the field contents
+    await soItemDelete.LoadRowValues(soItemDelete.Recordset);
+
+    // Render row
+    await soItemDelete.RenderRow();
+    <tr @Html.Raw(soItemDelete.RowAttributes)>
+@if (soItemDelete.SO_ITEM_ID.Visible) { // soItemDelete.SO_ITEM_ID.Visible (begin)
+        <td @Html.Raw(soItemDelete.SO_ITEM_ID.CellAttributes)>
+<span id="">
+<span @Html.Raw(soItemDelete.SO_ITEM_ID.ViewAttributes)>
+@Html.Raw(soItemDelete.SO_ITEM_ID.GetViewValue())</span>
+</span></td>
+} @* soItemDelete.SO_ITEM_ID.Visible (end) *@
+@if (soItemDelete.SO_ORDER_ID.Visible) { // soItemDelete.SO_ORDER_ID.Visible (begin)
+        <td @Html.Raw(soItemDelete.SO_ORDER_ID.CellAttributes)>
+<span id="">
+<span @Html.Raw(soItemDelete.SO_ORDER_ID.ViewAttributes)>
+@Html.Raw(soItemDelete.SO_ORDER_ID.GetViewValue())</span>
+</span></td>
+} @* soItemDelete.SO_ORDER_ID.Visible (end) *@
+@if (soItemDelete.ITEM_NAME.Visible) { // soItemDelete.ITEM_NAME.Visible (begin)
+        <td @Html.Raw(soItemDelete.ITEM_NAME.CellAttributes)>
+<span id="">
+<span @Html.Raw(soItemDelete.ITEM_NAME.ViewAttributes)>
+@Html.Raw(soItemDelete.ITEM_NAME.GetViewValue())</span>
+</span></td>
+} @* soItemDelete.ITEM_NAME.Visible (end) *@
+@if (soItemDelete.QUANTITY.Visible) { // soItemDelete.QUANTITY.Visible (begin)
+        <td @Html.Raw(soItemDelete.QUANTITY.CellAttributes)>
+<span id="">
+<span @Html.Raw(soItemDelete.QUANTITY.ViewAttributes)>
+@Html.Raw(soItemDelete.QUANTITY.GetViewValue())</span>
+</span></td>
+} @* soItemDelete.QUANTITY.Visible (end) *@
+@if (soItemDelete.PRICE.Visible) { // soItemDelete.PRICE.Visible (begin)
+        <td @Html.Raw(soItemDelete.PRICE.CellAttributes)>
+<span id="">
+<span @Html.Raw(soItemDelete.PRICE.ViewAttributes)>
+@Html.Raw(soItemDelete.PRICE.GetViewValue())</span>
+</span></td>
+} @* soItemDelete.PRICE.Visible (end) *@
+    </tr>
+}
+@{ soItemDelete.CloseRecordset(); }
+</tbody>
+</table>
+</div>
+</div>
+<div class="ew-buttons ew-desktop-buttons">
+<button class="btn btn-primary ew-btn" name="btn-action" id="btn-action" type="submit">@Html.Raw(Language.Phrase("DeleteBtn"))</button>
+<button class="btn btn-default ew-btn" name="btn-cancel" id="btn-cancel" type="button" data-href="@AppPath(soItemDelete.ReturnUrl)">@Html.Raw(Language.Phrase("CancelBtn"))</button>
+</div>
+</form>
+@soItemDelete.ShowPageFooter()
+@Html.Raw(GetDebugMessage())
+@ElapsedTime()
+<script>
+loadjs.ready("load", function() {
+    // Write your table-specific startup script here
+    // document.write("page loaded");
+});
+</script>

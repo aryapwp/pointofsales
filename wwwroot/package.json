@@ -1,0 +1,11 @@
+{
+    "name": "pointof-sales",
+    "version": "24.7.2",
+    "description": "pointof sales",
+    "license": "SEE LICENSE IN LICENSE.md",
+    "private": true,
+    "dependencies": {},
+    "engines": {
+        "node": ">=18"
+    }
+}

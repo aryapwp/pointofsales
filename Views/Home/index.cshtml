@@ -1,0 +1,12 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (index.ActionResult is EmptyResult) // Terminate page
+        return;
+
+    // Layout
+    Layout = index.UseLayout ? "_Layout" : "";
+}
+@index.ShowMessages()

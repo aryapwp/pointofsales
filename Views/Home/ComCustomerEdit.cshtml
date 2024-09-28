@@ -1,0 +1,126 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (comCustomerEdit.ActionResult is EmptyResult) // Terminate page
+        return;
+
+    // Layout
+    Layout = comCustomerEdit.UseLayout ? "_Layout" : "";
+}
+@comCustomerEdit.ShowPageHeader()
+@comCustomerEdit.ShowMessages()
+<main class="edit">
+<form name="fcom_customeredit" id="fcom_customeredit" class="@(comCustomerEdit.FormClassName)" action="@AppPath(CurrentPageName())" method="post" novalidate autocomplete="off">
+<script>
+var currentTable = @Html.Raw(ConvertToJson(comCustomerEdit.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { com_customer: currentTable } });
+var currentPageID = ew.PAGE_ID = "edit";
+var currentForm;
+var fcom_customeredit;
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery;
+    let fields = currentTable.fields;
+
+    // Form object
+    let form = new ew.FormBuilder()
+        .setId("fcom_customeredit")
+        .setPageId("edit")
+
+        // Add fields
+        .setFields([
+
+            ["COM_CUSTOMER_ID", [fields.COM_CUSTOMER_ID.visible && fields.COM_CUSTOMER_ID.required ? ew.Validators.required(fields.COM_CUSTOMER_ID.caption) : null], fields.COM_CUSTOMER_ID.isInvalid],
+            ["CUSTOMER_NAME", [fields.CUSTOMER_NAME.visible && fields.CUSTOMER_NAME.required ? ew.Validators.required(fields.CUSTOMER_NAME.caption) : null], fields.CUSTOMER_NAME.isInvalid]
+        ])
+
+        // Form_CustomValidate
+        .setCustomValidate(
+            function(fobj) { // DO NOT CHANGE THIS LINE!
+                    // Your custom validation code here, return false if invalid.
+                    return true;
+                }
+        )
+
+        // Use JavaScript validation or not
+        .setValidateRequired(ew.CLIENT_VALIDATE)
+
+        // Dynamic selection lists
+        .setLists({
+        })
+        .build();
+    window[form.id] = form;
+    currentForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<script>
+loadjs.ready("head", function() {
+    // Write your client script here, no need to add script tags.
+});
+</script>
+@if (CurrentPage?.CheckToken ?? false) {
+    <input type="hidden" name="@Config.TokenNameKey" value="@Config.TokenName"><!-- CSRF token name -->
+    @Html.AntiForgeryToken()
+}
+<input type="hidden" name="action" id="action" value="update">
+<input type="hidden" name="modal" value="@ConvertToInt(comCustomerEdit.IsModal)">
+@if (IsJsonResponse()) {
+<input type="hidden" name="json" value="1">
+}
+<input type="hidden" name="@(comCustomerEdit.OldKeyName)" value="@Html.Raw(comCustomerEdit.OldKey)">
+<div class="ew-edit-div"><!-- page* -->
+@if (comCustomerEdit.COM_CUSTOMER_ID.Visible) { // comCustomerEdit.COM_CUSTOMER_ID.Visible (begin)
+    <div id="r_COM_CUSTOMER_ID" @Html.Raw(comCustomerEdit.COM_CUSTOMER_ID.RowAttributes)>
+        <label id="elh_com_customer_COM_CUSTOMER_ID" class="@(comCustomerEdit.LeftColumnClass)">@Html.Raw(comCustomerEdit.COM_CUSTOMER_ID.Caption)@Html.Raw(comCustomerEdit.COM_CUSTOMER_ID.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(comCustomerEdit.RightColumnClass)"><div @Html.Raw(comCustomerEdit.COM_CUSTOMER_ID.CellAttributes)>
+<span id="el_com_customer_COM_CUSTOMER_ID">
+<span @Html.Raw(comCustomerEdit.COM_CUSTOMER_ID.ViewAttributes)>
+<input type="text" readonly class="form-control-plaintext" value="@Html.Raw(RemoveHtml(ConvertToString(comCustomerEdit.COM_CUSTOMER_ID.EditValue)))"></span>
+<input type="hidden" data-table="com_customer" data-field="x_COM_CUSTOMER_ID" data-hidden="1" name="x_COM_CUSTOMER_ID" id="x_COM_CUSTOMER_ID" value="@Html.Raw(HtmlEncode(comCustomerEdit.COM_CUSTOMER_ID.CurrentValue))">
+</span>
+</div></div>
+    </div>
+} @* comCustomerEdit.COM_CUSTOMER_ID.Visible (end) *@
+@if (comCustomerEdit.CUSTOMER_NAME.Visible) { // comCustomerEdit.CUSTOMER_NAME.Visible (begin)
+    <div id="r_CUSTOMER_NAME" @Html.Raw(comCustomerEdit.CUSTOMER_NAME.RowAttributes)>
+        <label id="elh_com_customer_CUSTOMER_NAME" for="x_CUSTOMER_NAME" class="@(comCustomerEdit.LeftColumnClass)">@Html.Raw(comCustomerEdit.CUSTOMER_NAME.Caption)@Html.Raw(comCustomerEdit.CUSTOMER_NAME.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(comCustomerEdit.RightColumnClass)"><div @Html.Raw(comCustomerEdit.CUSTOMER_NAME.CellAttributes)>
+<span id="el_com_customer_CUSTOMER_NAME">
+<input type="@(comCustomerEdit.CUSTOMER_NAME.InputTextType)" name="x_CUSTOMER_NAME" id="x_CUSTOMER_NAME" data-table="com_customer" data-field="x_CUSTOMER_NAME" value="@Html.Raw(comCustomerEdit.CUSTOMER_NAME.EditValue)" size="30" maxlength="100" placeholder="@Html.Raw(HtmlEncode(comCustomerEdit.CUSTOMER_NAME.PlaceHolder))" data-format-pattern="@(comCustomerEdit.CUSTOMER_NAME.FormatPattern)"@Html.Raw(comCustomerEdit.CUSTOMER_NAME.EditAttributes) aria-describedby="x_CUSTOMER_NAME_help">
+@Html.Raw(comCustomerEdit.CUSTOMER_NAME.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(comCustomerEdit.CUSTOMER_NAME.GetErrorMessage())</div>
+</span>
+</div></div>
+    </div>
+} @* comCustomerEdit.CUSTOMER_NAME.Visible (end) *@
+</div><!-- /page* -->
+@{ comCustomerEdit.CloseRecordset(); }
+@Html.Raw(comCustomerEdit.IsModal ? "<template class=\"ew-modal-buttons\">" : "<div class=\"row ew-buttons\">")<!-- buttons .row -->
+    <div class="@(comCustomerEdit.OffsetColumnClass)"><!-- buttons offset -->
+    <button class="btn btn-primary ew-btn" name="btn-action" id="btn-action" type="submit" form="fcom_customeredit">@Html.Raw(Language.Phrase("SaveBtn"))</button>
+@if (IsJsonResponse()) {
+    <button class="btn btn-default ew-btn" name="btn-cancel" id="btn-cancel" type="button" data-bs-dismiss="modal">@Html.Raw(Language.Phrase("CancelBtn"))</button>
+} else {
+    <button class="btn btn-default ew-btn" name="btn-cancel" id="btn-cancel" type="button" form="fcom_customeredit" data-href="@AppPath(comCustomerEdit.ReturnUrl)">@Html.Raw(Language.Phrase("CancelBtn"))</button>
+}
+    </div><!-- /buttons offset -->
+@Html.Raw(comCustomerEdit.IsModal ? "</template>" : "</div>")<!-- /buttons .row -->
+</form>
+</main>
+@comCustomerEdit.ShowPageFooter()
+@Html.Raw(GetDebugMessage())
+@ElapsedTime()
+<script>
+// Field event handlers
+loadjs.ready("head", function() {
+    ew.addEventHandlers("com_customer");
+});
+</script>
+<script>
+loadjs.ready("load", function() {
+    // Write your table-specific startup script here
+    // document.write("page loaded");
+});
+</script>

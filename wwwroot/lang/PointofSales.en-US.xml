@@ -1,0 +1,59 @@
+<ew-language date="2024/9/28" id="en-US" author="e.World Technology Limited">
+  <project>
+    <phrase id="footertext" value="&amp;copy;2024 e.World Technology Limited. All rights reserved." />
+    <menu id="1">
+      <phrase id="menutext" value="com customer" />
+    </menu>
+    <menu id="2">
+      <phrase id="menutext" value="so item" />
+    </menu>
+    <menu id="3">
+      <phrase id="menutext" value="so order" />
+    </menu>
+    <table id="com_customer">
+      <phrase id="tblcaption" value="com customer" />
+      <field id="com_customer_id">
+        <phrase id="fldcaption" value="COM CUSTOMER ID" />
+      </field>
+      <field id="customer_name">
+        <phrase id="fldcaption" value="CUSTOMER NAME" />
+      </field>
+    </table>
+    <table id="so_item">
+      <phrase id="tblcaption" value="so item" />
+      <field id="so_item_id">
+        <phrase id="fldcaption" value="SO ITEM ID" />
+      </field>
+      <field id="so_order_id">
+        <phrase id="fldcaption" value="SO ORDER ID" />
+      </field>
+      <field id="item_name">
+        <phrase id="fldcaption" value="ITEM NAME" />
+      </field>
+      <field id="quantity">
+        <phrase id="fldcaption" value="QUANTITY" />
+      </field>
+      <field id="price">
+        <phrase id="fldcaption" value="PRICE" />
+      </field>
+    </table>
+    <table id="so_order">
+      <phrase id="tblcaption" value="so order" />
+      <field id="so_order_id">
+        <phrase id="fldcaption" value="SO ORDER ID" />
+      </field>
+      <field id="order_no">
+        <phrase id="fldcaption" value="ORDER NO" />
+      </field>
+      <field id="order_date">
+        <phrase id="fldcaption" value="ORDER DATE" />
+      </field>
+      <field id="com_customer_id">
+        <phrase id="fldcaption" value="COM CUSTOMER ID" />
+      </field>
+      <field id="address">
+        <phrase id="fldcaption" value="ADDRESS" />
+      </field>
+    </table>
+  </project>
+</ew-language>

@@ -1,0 +1,194 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (soOrderEdit.ActionResult is EmptyResult) // Terminate page
+        return;
+
+    // Layout
+    Layout = soOrderEdit.UseLayout ? "_Layout" : "";
+}
+@soOrderEdit.ShowPageHeader()
+@soOrderEdit.ShowMessages()
+<main class="edit">
+<form name="fso_orderedit" id="fso_orderedit" class="@(soOrderEdit.FormClassName)" action="@AppPath(CurrentPageName())" method="post" novalidate autocomplete="off">
+<script>
+var currentTable = @Html.Raw(ConvertToJson(soOrderEdit.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { so_order: currentTable } });
+var currentPageID = ew.PAGE_ID = "edit";
+var currentForm;
+var fso_orderedit;
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery;
+    let fields = currentTable.fields;
+
+    // Form object
+    let form = new ew.FormBuilder()
+        .setId("fso_orderedit")
+        .setPageId("edit")
+
+        // Add fields
+        .setFields([
+
+            ["SO_ORDER_ID", [fields.SO_ORDER_ID.visible && fields.SO_ORDER_ID.required ? ew.Validators.required(fields.SO_ORDER_ID.caption) : null], fields.SO_ORDER_ID.isInvalid],
+            ["ORDER_NO", [fields.ORDER_NO.visible && fields.ORDER_NO.required ? ew.Validators.required(fields.ORDER_NO.caption) : null], fields.ORDER_NO.isInvalid],
+            ["ORDER_DATE", [fields.ORDER_DATE.visible && fields.ORDER_DATE.required ? ew.Validators.required(fields.ORDER_DATE.caption) : null, ew.Validators.datetime(fields.ORDER_DATE.clientFormatPattern)], fields.ORDER_DATE.isInvalid],
+            ["COM_CUSTOMER_ID", [fields.COM_CUSTOMER_ID.visible && fields.COM_CUSTOMER_ID.required ? ew.Validators.required(fields.COM_CUSTOMER_ID.caption) : null, ew.Validators.integer], fields.COM_CUSTOMER_ID.isInvalid],
+            ["ADDRESS", [fields.ADDRESS.visible && fields.ADDRESS.required ? ew.Validators.required(fields.ADDRESS.caption) : null], fields.ADDRESS.isInvalid]
+        ])
+
+        // Form_CustomValidate
+        .setCustomValidate(
+            function(fobj) { // DO NOT CHANGE THIS LINE!
+                    // Your custom validation code here, return false if invalid.
+                    return true;
+                }
+        )
+
+        // Use JavaScript validation or not
+        .setValidateRequired(ew.CLIENT_VALIDATE)
+
+        // Dynamic selection lists
+        .setLists({
+        })
+        .build();
+    window[form.id] = form;
+    currentForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<script>
+loadjs.ready("head", function() {
+    // Write your client script here, no need to add script tags.
+});
+</script>
+@if (CurrentPage?.CheckToken ?? false) {
+    <input type="hidden" name="@Config.TokenNameKey" value="@Config.TokenName"><!-- CSRF token name -->
+    @Html.AntiForgeryToken()
+}
+<input type="hidden" name="action" id="action" value="update">
+<input type="hidden" name="modal" value="@ConvertToInt(soOrderEdit.IsModal)">
+@if (IsJsonResponse()) {
+<input type="hidden" name="json" value="1">
+}
+<input type="hidden" name="@(soOrderEdit.OldKeyName)" value="@Html.Raw(soOrderEdit.OldKey)">
+<div class="ew-edit-div"><!-- page* -->
+@if (soOrderEdit.SO_ORDER_ID.Visible) { // soOrderEdit.SO_ORDER_ID.Visible (begin)
+    <div id="r_SO_ORDER_ID" @Html.Raw(soOrderEdit.SO_ORDER_ID.RowAttributes)>
+        <label id="elh_so_order_SO_ORDER_ID" class="@(soOrderEdit.LeftColumnClass)">@Html.Raw(soOrderEdit.SO_ORDER_ID.Caption)@Html.Raw(soOrderEdit.SO_ORDER_ID.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(soOrderEdit.RightColumnClass)"><div @Html.Raw(soOrderEdit.SO_ORDER_ID.CellAttributes)>
+<span id="el_so_order_SO_ORDER_ID">
+<span @Html.Raw(soOrderEdit.SO_ORDER_ID.ViewAttributes)>
+<input type="text" readonly class="form-control-plaintext" value="@Html.Raw(RemoveHtml(ConvertToString(soOrderEdit.SO_ORDER_ID.EditValue)))"></span>
+<input type="hidden" data-table="so_order" data-field="x_SO_ORDER_ID" data-hidden="1" name="x_SO_ORDER_ID" id="x_SO_ORDER_ID" value="@Html.Raw(HtmlEncode(soOrderEdit.SO_ORDER_ID.CurrentValue))">
+</span>
+</div></div>
+    </div>
+} @* soOrderEdit.SO_ORDER_ID.Visible (end) *@
+@if (soOrderEdit.ORDER_NO.Visible) { // soOrderEdit.ORDER_NO.Visible (begin)
+    <div id="r_ORDER_NO" @Html.Raw(soOrderEdit.ORDER_NO.RowAttributes)>
+        <label id="elh_so_order_ORDER_NO" for="x_ORDER_NO" class="@(soOrderEdit.LeftColumnClass)">@Html.Raw(soOrderEdit.ORDER_NO.Caption)@Html.Raw(soOrderEdit.ORDER_NO.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(soOrderEdit.RightColumnClass)"><div @Html.Raw(soOrderEdit.ORDER_NO.CellAttributes)>
+<span id="el_so_order_ORDER_NO">
+<input type="@(soOrderEdit.ORDER_NO.InputTextType)" name="x_ORDER_NO" id="x_ORDER_NO" data-table="so_order" data-field="x_ORDER_NO" value="@Html.Raw(soOrderEdit.ORDER_NO.EditValue)" size="30" maxlength="20" placeholder="@Html.Raw(HtmlEncode(soOrderEdit.ORDER_NO.PlaceHolder))" data-format-pattern="@(soOrderEdit.ORDER_NO.FormatPattern)"@Html.Raw(soOrderEdit.ORDER_NO.EditAttributes) aria-describedby="x_ORDER_NO_help">
+@Html.Raw(soOrderEdit.ORDER_NO.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(soOrderEdit.ORDER_NO.GetErrorMessage())</div>
+</span>
+</div></div>
+    </div>
+} @* soOrderEdit.ORDER_NO.Visible (end) *@
+@if (soOrderEdit.ORDER_DATE.Visible) { // soOrderEdit.ORDER_DATE.Visible (begin)
+    <div id="r_ORDER_DATE" @Html.Raw(soOrderEdit.ORDER_DATE.RowAttributes)>
+        <label id="elh_so_order_ORDER_DATE" for="x_ORDER_DATE" class="@(soOrderEdit.LeftColumnClass)">@Html.Raw(soOrderEdit.ORDER_DATE.Caption)@Html.Raw(soOrderEdit.ORDER_DATE.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(soOrderEdit.RightColumnClass)"><div @Html.Raw(soOrderEdit.ORDER_DATE.CellAttributes)>
+<span id="el_so_order_ORDER_DATE">
+<input type="@(soOrderEdit.ORDER_DATE.InputTextType)" name="x_ORDER_DATE" id="x_ORDER_DATE" data-table="so_order" data-field="x_ORDER_DATE" value="@Html.Raw(soOrderEdit.ORDER_DATE.EditValue)" placeholder="@Html.Raw(HtmlEncode(soOrderEdit.ORDER_DATE.PlaceHolder))" data-format-pattern="@(soOrderEdit.ORDER_DATE.FormatPattern)"@Html.Raw(soOrderEdit.ORDER_DATE.EditAttributes) aria-describedby="x_ORDER_DATE_help">
+@Html.Raw(soOrderEdit.ORDER_DATE.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(soOrderEdit.ORDER_DATE.GetErrorMessage())</div>
+@if (!soOrderEdit.ORDER_DATE.ReadOnly && !soOrderEdit.ORDER_DATE.Disabled && !soOrderEdit.ORDER_DATE.EditAttrs.Is("readonly") && !soOrderEdit.ORDER_DATE.EditAttrs.Is("disabled")) {
+<script>
+loadjs.ready(["fso_orderedit", "datetimepicker"], function () {
+    let format = "@Html.Raw(DateFormat(0))", // DN
+        options = {
+                localization: {
+                    locale: ew.LANGUAGE_ID + "-u-nu-" + ew.getNumberingSystem(),
+                    hourCycle: format.match(/H/) ? "h24" : "h12",
+                    format,
+                    ...ew.language.phrase("datetimepicker")
+                },
+                display: {
+                    icons: {
+                        previous: ew.IS_RTL ? "fa-solid fa-chevron-right" : "fa-solid fa-chevron-left",
+                        next: ew.IS_RTL ? "fa-solid fa-chevron-left" : "fa-solid fa-chevron-right"
+                    },
+                    components: {
+                        clock: !!format.match(/h/i) || !!format.match(/m/) || !!format.match(/s/i),
+                        hours: !!format.match(/h/i),
+                        minutes: !!format.match(/m/),
+                        seconds: !!format.match(/s/i)
+                    },
+                theme: ew.getPreferredTheme()
+                }
+            };
+    ew.createDateTimePicker("fso_orderedit", "x_ORDER_DATE", ew.deepAssign({"useCurrent":false,"display":{"sideBySide":false}}, options));
+});
+</script>
+}
+</span>
+</div></div>
+    </div>
+} @* soOrderEdit.ORDER_DATE.Visible (end) *@
+@if (soOrderEdit.COM_CUSTOMER_ID.Visible) { // soOrderEdit.COM_CUSTOMER_ID.Visible (begin)
+    <div id="r_COM_CUSTOMER_ID" @Html.Raw(soOrderEdit.COM_CUSTOMER_ID.RowAttributes)>
+        <label id="elh_so_order_COM_CUSTOMER_ID" for="x_COM_CUSTOMER_ID" class="@(soOrderEdit.LeftColumnClass)">@Html.Raw(soOrderEdit.COM_CUSTOMER_ID.Caption)@Html.Raw(soOrderEdit.COM_CUSTOMER_ID.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(soOrderEdit.RightColumnClass)"><div @Html.Raw(soOrderEdit.COM_CUSTOMER_ID.CellAttributes)>
+<span id="el_so_order_COM_CUSTOMER_ID">
+<input type="@(soOrderEdit.COM_CUSTOMER_ID.InputTextType)" name="x_COM_CUSTOMER_ID" id="x_COM_CUSTOMER_ID" data-table="so_order" data-field="x_COM_CUSTOMER_ID" value="@Html.Raw(soOrderEdit.COM_CUSTOMER_ID.EditValue)" size="30" placeholder="@Html.Raw(HtmlEncode(soOrderEdit.COM_CUSTOMER_ID.PlaceHolder))" data-format-pattern="@(soOrderEdit.COM_CUSTOMER_ID.FormatPattern)"@Html.Raw(soOrderEdit.COM_CUSTOMER_ID.EditAttributes) aria-describedby="x_COM_CUSTOMER_ID_help">
+@Html.Raw(soOrderEdit.COM_CUSTOMER_ID.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(soOrderEdit.COM_CUSTOMER_ID.GetErrorMessage())</div>
+</span>
+</div></div>
+    </div>
+} @* soOrderEdit.COM_CUSTOMER_ID.Visible (end) *@
+@if (soOrderEdit.ADDRESS.Visible) { // soOrderEdit.ADDRESS.Visible (begin)
+    <div id="r_ADDRESS" @Html.Raw(soOrderEdit.ADDRESS.RowAttributes)>
+        <label id="elh_so_order_ADDRESS" for="x_ADDRESS" class="@(soOrderEdit.LeftColumnClass)">@Html.Raw(soOrderEdit.ADDRESS.Caption)@Html.Raw(soOrderEdit.ADDRESS.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(soOrderEdit.RightColumnClass)"><div @Html.Raw(soOrderEdit.ADDRESS.CellAttributes)>
+<span id="el_so_order_ADDRESS">
+<input type="@(soOrderEdit.ADDRESS.InputTextType)" name="x_ADDRESS" id="x_ADDRESS" data-table="so_order" data-field="x_ADDRESS" value="@Html.Raw(soOrderEdit.ADDRESS.EditValue)" size="30" maxlength="100" placeholder="@Html.Raw(HtmlEncode(soOrderEdit.ADDRESS.PlaceHolder))" data-format-pattern="@(soOrderEdit.ADDRESS.FormatPattern)"@Html.Raw(soOrderEdit.ADDRESS.EditAttributes) aria-describedby="x_ADDRESS_help">
+@Html.Raw(soOrderEdit.ADDRESS.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(soOrderEdit.ADDRESS.GetErrorMessage())</div>
+</span>
+</div></div>
+    </div>
+} @* soOrderEdit.ADDRESS.Visible (end) *@
+</div><!-- /page* -->
+@{ soOrderEdit.CloseRecordset(); }
+@Html.Raw(soOrderEdit.IsModal ? "<template class=\"ew-modal-buttons\">" : "<div class=\"row ew-buttons\">")<!-- buttons .row -->
+    <div class="@(soOrderEdit.OffsetColumnClass)"><!-- buttons offset -->
+    <button class="btn btn-primary ew-btn" name="btn-action" id="btn-action" type="submit" form="fso_orderedit">@Html.Raw(Language.Phrase("SaveBtn"))</button>
+@if (IsJsonResponse()) {
+    <button class="btn btn-default ew-btn" name="btn-cancel" id="btn-cancel" type="button" data-bs-dismiss="modal">@Html.Raw(Language.Phrase("CancelBtn"))</button>
+} else {
+    <button class="btn btn-default ew-btn" name="btn-cancel" id="btn-cancel" type="button" form="fso_orderedit" data-href="@AppPath(soOrderEdit.ReturnUrl)">@Html.Raw(Language.Phrase("CancelBtn"))</button>
+}
+    </div><!-- /buttons offset -->
+@Html.Raw(soOrderEdit.IsModal ? "</template>" : "</div>")<!-- /buttons .row -->
+</form>
+</main>
+@soOrderEdit.ShowPageFooter()
+@Html.Raw(GetDebugMessage())
+@ElapsedTime()
+<script>
+// Field event handlers
+loadjs.ready("head", function() {
+    ew.addEventHandlers("so_order");
+});
+</script>
+<script>
+loadjs.ready("load", function() {
+    // Write your table-specific startup script here
+    // document.write("page loaded");
+});
+</script>

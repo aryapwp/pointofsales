@@ -1,0 +1,111 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (comCustomerDelete.ActionResult is EmptyResult) // Terminate page
+        return;
+
+    // Layout
+    Layout = comCustomerDelete.UseLayout ? "_Layout" : "";
+}
+<script>
+var currentTable = @Html.Raw(ConvertToJson(comCustomerDelete.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { com_customer: currentTable } });
+var currentPageID = ew.PAGE_ID = "delete";
+var currentForm;
+var fcom_customerdelete;
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery;
+    let fields = currentTable.fields;
+
+    // Form object
+    let form = new ew.FormBuilder()
+        .setId("fcom_customerdelete")
+        .setPageId("delete")
+        .build();
+    window[form.id] = form;
+    currentForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<script>
+loadjs.ready("head", function() {
+    // Write your client script here, no need to add script tags.
+});
+</script>
+@comCustomerDelete.ShowPageHeader()
+@comCustomerDelete.ShowMessages()
+<form name="fcom_customerdelete" id="fcom_customerdelete" class="ew-form ew-delete-form" action="@AppPath(CurrentPageName())" method="post" novalidate autocomplete="off">
+@if (CurrentPage?.CheckToken ?? false) {
+    <input type="hidden" name="@Config.TokenNameKey" value="@Config.TokenName"><!-- CSRF token name -->
+    @Html.AntiForgeryToken()
+}
+<input type="hidden" name="action" id="action" value="delete">
+@foreach (string key in comCustomerDelete.RecordKeys) {
+<input type="hidden" name="key_m[]" value="@key">
+}
+<div class="card ew-card ew-grid @(comCustomerDelete.TableGridClass)">
+<div class="card-body ew-grid-middle-panel @(comCustomerDelete.TableContainerClass)" style="@(comCustomerDelete.TableContainerStyle)">
+<table class="@(comCustomerDelete.TableClass)">
+    <thead>
+    <tr class="ew-table-header">
+@if (comCustomerDelete.COM_CUSTOMER_ID.Visible) { // comCustomerDelete.COM_CUSTOMER_ID.Visible (begin)
+        <th class="@Html.Raw(comCustomerDelete.COM_CUSTOMER_ID.HeaderCellClass)"><span id="elh_com_customer_COM_CUSTOMER_ID" class="com_customer_COM_CUSTOMER_ID">@Html.Raw(comCustomerDelete.COM_CUSTOMER_ID.Caption)</span></th>
+} @* comCustomerDelete.COM_CUSTOMER_ID.Visible (end) *@
+@if (comCustomerDelete.CUSTOMER_NAME.Visible) { // comCustomerDelete.CUSTOMER_NAME.Visible (begin)
+        <th class="@Html.Raw(comCustomerDelete.CUSTOMER_NAME.HeaderCellClass)"><span id="elh_com_customer_CUSTOMER_NAME" class="com_customer_CUSTOMER_NAME">@Html.Raw(comCustomerDelete.CUSTOMER_NAME.Caption)</span></th>
+} @* comCustomerDelete.CUSTOMER_NAME.Visible (end) *@
+    </tr>
+    </thead>
+    <tbody>
+@{ comCustomerDelete.RecordCount = 0; }
+@while (comCustomerDelete.Recordset != null && await comCustomerDelete.Recordset.ReadAsync()) { // DN
+    comCustomerDelete.RecordCount++;
+    comCustomerDelete.RowCount++;
+
+    // Set row properties
+    comCustomerDelete.ResetAttributes();
+    comCustomerDelete.RowType = RowType.View; // View
+
+    // Get the field contents
+    await comCustomerDelete.LoadRowValues(comCustomerDelete.Recordset);
+
+    // Render row
+    await comCustomerDelete.RenderRow();
+    <tr @Html.Raw(comCustomerDelete.RowAttributes)>
+@if (comCustomerDelete.COM_CUSTOMER_ID.Visible) { // comCustomerDelete.COM_CUSTOMER_ID.Visible (begin)
+        <td @Html.Raw(comCustomerDelete.COM_CUSTOMER_ID.CellAttributes)>
+<span id="">
+<span @Html.Raw(comCustomerDelete.COM_CUSTOMER_ID.ViewAttributes)>
+@Html.Raw(comCustomerDelete.COM_CUSTOMER_ID.GetViewValue())</span>
+</span></td>
+} @* comCustomerDelete.COM_CUSTOMER_ID.Visible (end) *@
+@if (comCustomerDelete.CUSTOMER_NAME.Visible) { // comCustomerDelete.CUSTOMER_NAME.Visible (begin)
+        <td @Html.Raw(comCustomerDelete.CUSTOMER_NAME.CellAttributes)>
+<span id="">
+<span @Html.Raw(comCustomerDelete.CUSTOMER_NAME.ViewAttributes)>
+@Html.Raw(comCustomerDelete.CUSTOMER_NAME.GetViewValue())</span>
+</span></td>
+} @* comCustomerDelete.CUSTOMER_NAME.Visible (end) *@
+    </tr>
+}
+@{ comCustomerDelete.CloseRecordset(); }
+</tbody>
+</table>
+</div>
+</div>
+<div class="ew-buttons ew-desktop-buttons">
+<button class="btn btn-primary ew-btn" name="btn-action" id="btn-action" type="submit">@Html.Raw(Language.Phrase("DeleteBtn"))</button>
+<button class="btn btn-default ew-btn" name="btn-cancel" id="btn-cancel" type="button" data-href="@AppPath(comCustomerDelete.ReturnUrl)">@Html.Raw(Language.Phrase("CancelBtn"))</button>
+</div>
+</form>
+@comCustomerDelete.ShowPageFooter()
+@Html.Raw(GetDebugMessage())
+@ElapsedTime()
+<script>
+loadjs.ready("load", function() {
+    // Write your table-specific startup script here
+    // document.write("page loaded");
+});
+</script>

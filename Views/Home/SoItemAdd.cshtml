@@ -1,0 +1,150 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (soItemAdd.ActionResult is EmptyResult) // Terminate page
+        return;
+
+    // Layout
+    Layout = soItemAdd.UseLayout ? "_Layout" : "";
+}
+<script>
+var currentTable = @Html.Raw(ConvertToJson(soItemAdd.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { so_item: currentTable } });
+var currentPageID = ew.PAGE_ID = "add";
+var currentForm;
+var fso_itemadd;
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery;
+    let fields = currentTable.fields;
+
+    // Form object
+    let form = new ew.FormBuilder()
+        .setId("fso_itemadd")
+        .setPageId("add")
+
+        // Add fields
+        .setFields([
+
+            ["SO_ORDER_ID", [fields.SO_ORDER_ID.visible && fields.SO_ORDER_ID.required ? ew.Validators.required(fields.SO_ORDER_ID.caption) : null, ew.Validators.integer], fields.SO_ORDER_ID.isInvalid],
+            ["ITEM_NAME", [fields.ITEM_NAME.visible && fields.ITEM_NAME.required ? ew.Validators.required(fields.ITEM_NAME.caption) : null], fields.ITEM_NAME.isInvalid],
+            ["QUANTITY", [fields.QUANTITY.visible && fields.QUANTITY.required ? ew.Validators.required(fields.QUANTITY.caption) : null, ew.Validators.integer], fields.QUANTITY.isInvalid],
+            ["PRICE", [fields.PRICE.visible && fields.PRICE.required ? ew.Validators.required(fields.PRICE.caption) : null, ew.Validators.float], fields.PRICE.isInvalid]
+        ])
+
+        // Form_CustomValidate
+        .setCustomValidate(
+            function(fobj) { // DO NOT CHANGE THIS LINE!
+                    // Your custom validation code here, return false if invalid.
+                    return true;
+                }
+        )
+
+        // Use JavaScript validation or not
+        .setValidateRequired(ew.CLIENT_VALIDATE)
+
+        // Dynamic selection lists
+        .setLists({
+        })
+        .build();
+    window[form.id] = form;
+    currentForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<script>
+loadjs.ready("head", function() {
+    // Write your client script here, no need to add script tags.
+});
+</script>
+@soItemAdd.ShowPageHeader()
+@soItemAdd.ShowMessages()
+<form name="fso_itemadd" id="fso_itemadd" class="@(soItemAdd.FormClassName)" action="@AppPath(CurrentPageName())" method="post" novalidate autocomplete="off">
+@if (CurrentPage?.CheckToken ?? false) {
+    <input type="hidden" name="@Config.TokenNameKey" value="@Config.TokenName"><!-- CSRF token name -->
+    @Html.AntiForgeryToken()
+}
+<input type="hidden" name="action" id="action" value="insert">
+<input type="hidden" name="modal" value="@ConvertToInt(soItemAdd.IsModal)">
+@if (IsJsonResponse()) {
+<input type="hidden" name="json" value="1">
+}
+<input type="hidden" name="@(soItemAdd.OldKeyName)" value="@Html.Raw(soItemAdd.OldKey)">
+<div class="ew-add-div"><!-- page* -->
+@if (soItemAdd.SO_ORDER_ID.Visible) { // soItemAdd.SO_ORDER_ID.Visible (begin)
+    <div id="r_SO_ORDER_ID" @Html.Raw(soItemAdd.SO_ORDER_ID.RowAttributes)>
+        <label id="elh_so_item_SO_ORDER_ID" for="x_SO_ORDER_ID" class="@(soItemAdd.LeftColumnClass)">@Html.Raw(soItemAdd.SO_ORDER_ID.Caption)@Html.Raw(soItemAdd.SO_ORDER_ID.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(soItemAdd.RightColumnClass)"><div @Html.Raw(soItemAdd.SO_ORDER_ID.CellAttributes)>
+<span id="el_so_item_SO_ORDER_ID">
+<input type="@(soItemAdd.SO_ORDER_ID.InputTextType)" name="x_SO_ORDER_ID" id="x_SO_ORDER_ID" data-table="so_item" data-field="x_SO_ORDER_ID" value="@Html.Raw(soItemAdd.SO_ORDER_ID.EditValue)" size="30" placeholder="@Html.Raw(HtmlEncode(soItemAdd.SO_ORDER_ID.PlaceHolder))" data-format-pattern="@(soItemAdd.SO_ORDER_ID.FormatPattern)"@Html.Raw(soItemAdd.SO_ORDER_ID.EditAttributes) aria-describedby="x_SO_ORDER_ID_help">
+@Html.Raw(soItemAdd.SO_ORDER_ID.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(soItemAdd.SO_ORDER_ID.GetErrorMessage())</div>
+</span>
+</div></div>
+    </div>
+} @* soItemAdd.SO_ORDER_ID.Visible (end) *@
+@if (soItemAdd.ITEM_NAME.Visible) { // soItemAdd.ITEM_NAME.Visible (begin)
+    <div id="r_ITEM_NAME" @Html.Raw(soItemAdd.ITEM_NAME.RowAttributes)>
+        <label id="elh_so_item_ITEM_NAME" for="x_ITEM_NAME" class="@(soItemAdd.LeftColumnClass)">@Html.Raw(soItemAdd.ITEM_NAME.Caption)@Html.Raw(soItemAdd.ITEM_NAME.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(soItemAdd.RightColumnClass)"><div @Html.Raw(soItemAdd.ITEM_NAME.CellAttributes)>
+<span id="el_so_item_ITEM_NAME">
+<input type="@(soItemAdd.ITEM_NAME.InputTextType)" name="x_ITEM_NAME" id="x_ITEM_NAME" data-table="so_item" data-field="x_ITEM_NAME" value="@Html.Raw(soItemAdd.ITEM_NAME.EditValue)" size="30" maxlength="100" placeholder="@Html.Raw(HtmlEncode(soItemAdd.ITEM_NAME.PlaceHolder))" data-format-pattern="@(soItemAdd.ITEM_NAME.FormatPattern)"@Html.Raw(soItemAdd.ITEM_NAME.EditAttributes) aria-describedby="x_ITEM_NAME_help">
+@Html.Raw(soItemAdd.ITEM_NAME.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(soItemAdd.ITEM_NAME.GetErrorMessage())</div>
+</span>
+</div></div>
+    </div>
+} @* soItemAdd.ITEM_NAME.Visible (end) *@
+@if (soItemAdd.QUANTITY.Visible) { // soItemAdd.QUANTITY.Visible (begin)
+    <div id="r_QUANTITY" @Html.Raw(soItemAdd.QUANTITY.RowAttributes)>
+        <label id="elh_so_item_QUANTITY" for="x_QUANTITY" class="@(soItemAdd.LeftColumnClass)">@Html.Raw(soItemAdd.QUANTITY.Caption)@Html.Raw(soItemAdd.QUANTITY.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(soItemAdd.RightColumnClass)"><div @Html.Raw(soItemAdd.QUANTITY.CellAttributes)>
+<span id="el_so_item_QUANTITY">
+<input type="@(soItemAdd.QUANTITY.InputTextType)" name="x_QUANTITY" id="x_QUANTITY" data-table="so_item" data-field="x_QUANTITY" value="@Html.Raw(soItemAdd.QUANTITY.EditValue)" size="30" placeholder="@Html.Raw(HtmlEncode(soItemAdd.QUANTITY.PlaceHolder))" data-format-pattern="@(soItemAdd.QUANTITY.FormatPattern)"@Html.Raw(soItemAdd.QUANTITY.EditAttributes) aria-describedby="x_QUANTITY_help">
+@Html.Raw(soItemAdd.QUANTITY.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(soItemAdd.QUANTITY.GetErrorMessage())</div>
+</span>
+</div></div>
+    </div>
+} @* soItemAdd.QUANTITY.Visible (end) *@
+@if (soItemAdd.PRICE.Visible) { // soItemAdd.PRICE.Visible (begin)
+    <div id="r_PRICE" @Html.Raw(soItemAdd.PRICE.RowAttributes)>
+        <label id="elh_so_item_PRICE" for="x_PRICE" class="@(soItemAdd.LeftColumnClass)">@Html.Raw(soItemAdd.PRICE.Caption)@Html.Raw(soItemAdd.PRICE.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(soItemAdd.RightColumnClass)"><div @Html.Raw(soItemAdd.PRICE.CellAttributes)>
+<span id="el_so_item_PRICE">
+<input type="@(soItemAdd.PRICE.InputTextType)" name="x_PRICE" id="x_PRICE" data-table="so_item" data-field="x_PRICE" value="@Html.Raw(soItemAdd.PRICE.EditValue)" size="30" placeholder="@Html.Raw(HtmlEncode(soItemAdd.PRICE.PlaceHolder))" data-format-pattern="@(soItemAdd.PRICE.FormatPattern)"@Html.Raw(soItemAdd.PRICE.EditAttributes) aria-describedby="x_PRICE_help">
+@Html.Raw(soItemAdd.PRICE.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(soItemAdd.PRICE.GetErrorMessage())</div>
+</span>
+</div></div>
+    </div>
+} @* soItemAdd.PRICE.Visible (end) *@
+</div><!-- /page* -->
+@{ soItemAdd.CloseRecordset(); }
+@Html.Raw(soItemAdd.IsModal ? "<template class=\"ew-modal-buttons\">" : "<div class=\"row ew-buttons\">")<!-- buttons .row -->
+    <div class="@(soItemAdd.OffsetColumnClass)"><!-- buttons offset -->
+    <button class="btn btn-primary ew-btn" name="btn-action" id="btn-action" type="submit" form="fso_itemadd">@Html.Raw(Language.Phrase("AddBtn"))</button>
+@if (IsJsonResponse()) {
+    <button class="btn btn-default ew-btn" name="btn-cancel" id="btn-cancel" type="button" data-bs-dismiss="modal">@Html.Raw(Language.Phrase("CancelBtn"))</button>
+} else {
+    <button class="btn btn-default ew-btn" name="btn-cancel" id="btn-cancel" type="button" form="fso_itemadd" data-href="@AppPath(soItemAdd.ReturnUrl)">@Html.Raw(Language.Phrase("CancelBtn"))</button>
+}
+    </div><!-- /buttons offset -->
+@Html.Raw(soItemAdd.IsModal ? "</template>" : "</div>")<!-- /buttons .row -->
+</form>
+@soItemAdd.ShowPageFooter()
+@Html.Raw(GetDebugMessage())
+@ElapsedTime()
+<script>
+// Field event handlers
+loadjs.ready("head", function() {
+    ew.addEventHandlers("so_item");
+});
+</script>
+<script>
+loadjs.ready("load", function() {
+    // Write your table-specific startup script here
+    // document.write("page loaded");
+});
+</script>

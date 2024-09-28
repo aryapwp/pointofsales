@@ -1,0 +1,282 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (soOrderList.ActionResult is EmptyResult) // Terminate page
+        return;
+
+    // Layout
+    Layout = soOrderList.UseLayout ? "_Layout" : "";
+}
+@if (!soOrderList.IsExport()) {
+<script>
+var currentTable = @Html.Raw(ConvertToJson(soOrderList.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { so_order: currentTable } });
+var currentPageID = ew.PAGE_ID = "list";
+var currentForm;
+var @(soOrderList.FormName);
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery;
+    let fields = currentTable.fields;
+
+    // Form object
+    let form = new ew.FormBuilder()
+        .setId("@(soOrderList.FormName)")
+        .setPageId("list")
+        .setSubmitWithFetch(@(soOrderList.UseAjaxActions ? "true" : "false"))
+        .setFormKeyCountName("@(soOrderList.FormKeyCountName)")
+        .build();
+    window[form.id] = form;
+    currentForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<script>
+loadjs.ready("head", function() {
+    // Write your client script here, no need to add script tags.
+});
+</script>
+}
+@if (!soOrderList.IsExport()) {
+<div class="btn-toolbar ew-toolbar">
+@if (soOrderList.TotalRecords > 0 && soOrderList.ExportOptions.Visible) {
+    soOrderList.ExportOptions.Render("body");
+}
+@if (soOrderList.ImportOptions.Visible) {
+    soOrderList.ImportOptions.Render("body");
+}
+@if (soOrderList.SearchOptions.Visible) {
+    soOrderList.SearchOptions.Render("body");
+}
+@if (soOrderList.FilterOptions.Visible) {
+    soOrderList.FilterOptions.Render("body");
+}
+</div>
+}
+@if (!soOrderList.IsModal) {
+<form name="fso_ordersrch" id="fso_ordersrch" class="ew-form ew-ext-search-form" action="@AppPath(CurrentPageName())" novalidate autocomplete="off">
+<div id="fso_ordersrch_search_panel" class="mb-2 mb-sm-0 @(soOrderList.SearchPanelClass)"><!-- .ew-search-panel -->
+<script>
+var currentTable = @Html.Raw(ConvertToJson(soOrderList.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { so_order: currentTable } });
+var currentForm;
+var fso_ordersrch, currentSearchForm, currentAdvancedSearchForm;
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery,
+        fields = currentTable.fields;
+
+    // Form object for search
+    let form = new ew.FormBuilder()
+        .setId("fso_ordersrch")
+        .setPageId("list")
+@if (soOrderList.UseAjaxActions) {
+        <text>.setSubmitWithFetch(true)</text>
+}
+
+        // Dynamic selection lists
+        .setLists({
+        })
+
+        // Filters
+        .setFilterList(@Html.Raw(soOrderList.GetFilterList()))
+        .build();
+    window[form.id] = form;
+    currentSearchForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<input type="hidden" name="cmd" value="search">
+@if (!soOrderList.IsExport() && Empty(soOrderList.CurrentAction) && soOrderList.HasSearchFields()) { @* Show search form (begin) *@
+<div class="ew-extended-search container-fluid ps-2">
+<div class="row mb-0">
+    <div class="col-sm-auto px-0 pe-sm-2">
+        <div class="ew-basic-search input-group">
+            <input type="search" name="@(Config.TableBasicSearch)" id="@(Config.TableBasicSearch)" class="form-control ew-basic-search-keyword" value="@Html.Raw(HtmlEncode(soOrderList.BasicSearch.SessionKeyword))" placeholder="@(HtmlEncode(Language.Phrase("Search")))" aria-label="@(HtmlEncode(Language.Phrase("Search")))">
+            <input type="hidden" name="@(Config.TableBasicSearchType)" id="@(Config.TableBasicSearchType)" class="ew-basic-search-type" value="@(HtmlEncode(soOrderList.BasicSearch.SessionType))">
+            <button type="button" data-bs-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" aria-haspopup="true" aria-expanded="false">
+                <span id="searchtype">@Html.Raw(soOrderList.BasicSearch.TypeNameShort)</span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end">
+                <button type="button" class="dropdown-item@(soOrderList.BasicSearch.SessionType == "" ? " active" : "")" form="fso_ordersrch" data-ew-action="search-type">@Html.Raw(Language.Phrase("QuickSearchAuto"))</button>
+                <button type="button" class="dropdown-item@(soOrderList.BasicSearch.SessionType == "=" ? " active" : "")" form="fso_ordersrch" data-ew-action="search-type" data-search-type="=">@Html.Raw(Language.Phrase("QuickSearchExact"))</button>
+                <button type="button" class="dropdown-item@(soOrderList.BasicSearch.SessionType == "AND" ? " active" : "")" form="fso_ordersrch" data-ew-action="search-type" data-search-type="AND">@Html.Raw(Language.Phrase("QuickSearchAll"))</button>
+                <button type="button" class="dropdown-item@(soOrderList.BasicSearch.SessionType == "OR" ? " active" : "")" form="fso_ordersrch" data-ew-action="search-type" data-search-type="OR">@Html.Raw(Language.Phrase("QuickSearchAny"))</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-auto mb-3">
+        <button class="btn btn-primary" name="btn-submit" id="btn-submit" type="submit">@Html.Raw(Language.Phrase("SearchBtn"))</button>
+    </div>
+</div>
+</div><!-- /.ew-extended-search -->
+} @* Show search form (end) *@
+</div><!-- /.ew-search-panel -->
+</form>
+}
+@soOrderList.ShowPageHeader()
+@soOrderList.ShowMessages()
+<main class="list @(soOrderList.TotalRecords == 0 && !soOrderList.IsAdd ? " ew-no-record" : "")">
+<div id="ew-header-options">
+    @soOrderList.HeaderOptions.RenderBody()
+</div>
+<div id="ew-list">
+@if (soOrderList.TotalRecords > 0 || !Empty(soOrderList.CurrentAction)) {
+<div class="card ew-card ew-grid@(soOrderList.IsAddOrEdit ? " ew-grid-add-edit" : "") @(soOrderList.TableGridClass)">
+<form name="@(soOrderList.FormName)" id="@(soOrderList.FormName)" class="ew-form ew-list-form" action="@AppPath(soOrderList.PageName)" method="post" novalidate autocomplete="off">
+@if (CurrentPage?.CheckToken ?? false) {
+    <input type="hidden" name="@Config.TokenNameKey" value="@Config.TokenName"><!-- CSRF token name -->
+    @Html.AntiForgeryToken()
+}
+@if (soOrderList.IsModal) {
+<input type="hidden" name="modal" value="1">
+}
+<div id="gmp_so_order" class="card-body ew-grid-middle-panel @(soOrderList.TableContainerClass)" style="@(soOrderList.TableContainerStyle)">
+@if (soOrderList.TotalRecords > 0 || soOrderList.IsGridEdit || soOrderList.IsMultiEdit) {
+<table id="tbl_so_orderlist" class="@(soOrderList.TableClass)"><!-- .ew-table -->
+<thead>
+    <tr class="ew-table-header">
+@{
+    // Header row
+    soOrderList.RowType = RowType.Header;
+
+    // Render list options
+    await soOrderList.RenderListOptions();
+}
+@* Render list options (header, left) *@
+@soOrderList.ListOptions.RenderHeader("left")
+@if (soOrderList.SO_ORDER_ID.Visible) { // soOrderList.SO_ORDER_ID.Visible (begin)
+        <th data-name="SO_ORDER_ID" class="@(soOrderList.SO_ORDER_ID.HeaderCellClass)"><div id="elh_so_order_SO_ORDER_ID" class="so_order_SO_ORDER_ID">@Html.Raw(soOrderList.RenderFieldHeader(soOrderList.SO_ORDER_ID))</div></th>
+} @* soOrderList.SO_ORDER_ID.Visible (end) *@
+@if (soOrderList.ORDER_NO.Visible) { // soOrderList.ORDER_NO.Visible (begin)
+        <th data-name="ORDER_NO" class="@(soOrderList.ORDER_NO.HeaderCellClass)"><div id="elh_so_order_ORDER_NO" class="so_order_ORDER_NO">@Html.Raw(soOrderList.RenderFieldHeader(soOrderList.ORDER_NO))</div></th>
+} @* soOrderList.ORDER_NO.Visible (end) *@
+@if (soOrderList.ORDER_DATE.Visible) { // soOrderList.ORDER_DATE.Visible (begin)
+        <th data-name="ORDER_DATE" class="@(soOrderList.ORDER_DATE.HeaderCellClass)"><div id="elh_so_order_ORDER_DATE" class="so_order_ORDER_DATE">@Html.Raw(soOrderList.RenderFieldHeader(soOrderList.ORDER_DATE))</div></th>
+} @* soOrderList.ORDER_DATE.Visible (end) *@
+@if (soOrderList.COM_CUSTOMER_ID.Visible) { // soOrderList.COM_CUSTOMER_ID.Visible (begin)
+        <th data-name="COM_CUSTOMER_ID" class="@(soOrderList.COM_CUSTOMER_ID.HeaderCellClass)"><div id="elh_so_order_COM_CUSTOMER_ID" class="so_order_COM_CUSTOMER_ID">@Html.Raw(soOrderList.RenderFieldHeader(soOrderList.COM_CUSTOMER_ID))</div></th>
+} @* soOrderList.COM_CUSTOMER_ID.Visible (end) *@
+@if (soOrderList.ADDRESS.Visible) { // soOrderList.ADDRESS.Visible (begin)
+        <th data-name="ADDRESS" class="@(soOrderList.ADDRESS.HeaderCellClass)"><div id="elh_so_order_ADDRESS" class="so_order_ADDRESS">@Html.Raw(soOrderList.RenderFieldHeader(soOrderList.ADDRESS))</div></th>
+} @* soOrderList.ADDRESS.Visible (end) *@
+@* Render list options (header, right) *@
+@soOrderList.ListOptions.RenderHeader("right")
+    </tr>
+</thead>
+<tbody data-page="@(soOrderList.PageNumber)">
+@{
+    await soOrderList.SetupGrid();
+    bool eof = soOrderList.Recordset == null; // DN
+}
+@while (soOrderList.RecordCount < soOrderList.StopRecord || SameString(soOrderList.RowIndex, "$rowindex$")) { // Begin While
+    if (!eof && !SameString(soOrderList.RowIndex, "$rowindex$") &&
+        (!soOrderList.IsGridAdd || soOrderList.CurrentMode == "copy") &&
+        (!((soOrderList.IsCopy || soOrderList.IsAdd) && soOrderList.RowIndex is int rowIndex && rowIndex == 0))) // DN
+        eof = !await soOrderList.Recordset.ReadAsync();
+    soOrderList.RecordCount++;
+    if (soOrderList.RecordCount >= soOrderList.StartRecord) {
+        await soOrderList.SetupRow();
+    <tr @Html.Raw(soOrderList.RowAttributes)>
+    @* Render list options (body, left) *@
+    @soOrderList.ListOptions.RenderBody("left", soOrderList.RowCount)
+    @if (soOrderList.SO_ORDER_ID.Visible) { // soOrderList.SO_ORDER_ID.Visible (begin)
+        <td data-name="SO_ORDER_ID" @Html.Raw(soOrderList.SO_ORDER_ID.CellAttributes)>
+<span id="el@(soOrderList.RowIndex == "$rowindex$" ? "$rowindex$" : soOrderList.RowCount)_so_order_SO_ORDER_ID" class="el_so_order_SO_ORDER_ID">
+<span @Html.Raw(soOrderList.SO_ORDER_ID.ViewAttributes)>
+@Html.Raw(soOrderList.SO_ORDER_ID.GetViewValue())</span>
+</span>
+</td>
+    } @* soOrderList.SO_ORDER_ID.Visible (end) *@
+    @if (soOrderList.ORDER_NO.Visible) { // soOrderList.ORDER_NO.Visible (begin)
+        <td data-name="ORDER_NO" @Html.Raw(soOrderList.ORDER_NO.CellAttributes)>
+<span id="el@(soOrderList.RowIndex == "$rowindex$" ? "$rowindex$" : soOrderList.RowCount)_so_order_ORDER_NO" class="el_so_order_ORDER_NO">
+<span @Html.Raw(soOrderList.ORDER_NO.ViewAttributes)>
+@Html.Raw(soOrderList.ORDER_NO.GetViewValue())</span>
+</span>
+</td>
+    } @* soOrderList.ORDER_NO.Visible (end) *@
+    @if (soOrderList.ORDER_DATE.Visible) { // soOrderList.ORDER_DATE.Visible (begin)
+        <td data-name="ORDER_DATE" @Html.Raw(soOrderList.ORDER_DATE.CellAttributes)>
+<span id="el@(soOrderList.RowIndex == "$rowindex$" ? "$rowindex$" : soOrderList.RowCount)_so_order_ORDER_DATE" class="el_so_order_ORDER_DATE">
+<span @Html.Raw(soOrderList.ORDER_DATE.ViewAttributes)>
+@Html.Raw(soOrderList.ORDER_DATE.GetViewValue())</span>
+</span>
+</td>
+    } @* soOrderList.ORDER_DATE.Visible (end) *@
+    @if (soOrderList.COM_CUSTOMER_ID.Visible) { // soOrderList.COM_CUSTOMER_ID.Visible (begin)
+        <td data-name="COM_CUSTOMER_ID" @Html.Raw(soOrderList.COM_CUSTOMER_ID.CellAttributes)>
+<span id="el@(soOrderList.RowIndex == "$rowindex$" ? "$rowindex$" : soOrderList.RowCount)_so_order_COM_CUSTOMER_ID" class="el_so_order_COM_CUSTOMER_ID">
+<span @Html.Raw(soOrderList.COM_CUSTOMER_ID.ViewAttributes)>
+@Html.Raw(soOrderList.COM_CUSTOMER_ID.GetViewValue())</span>
+</span>
+</td>
+    } @* soOrderList.COM_CUSTOMER_ID.Visible (end) *@
+    @if (soOrderList.ADDRESS.Visible) { // soOrderList.ADDRESS.Visible (begin)
+        <td data-name="ADDRESS" @Html.Raw(soOrderList.ADDRESS.CellAttributes)>
+<span id="el@(soOrderList.RowIndex == "$rowindex$" ? "$rowindex$" : soOrderList.RowCount)_so_order_ADDRESS" class="el_so_order_ADDRESS">
+<span @Html.Raw(soOrderList.ADDRESS.ViewAttributes)>
+@Html.Raw(soOrderList.ADDRESS.GetViewValue())</span>
+</span>
+</td>
+    } @* soOrderList.ADDRESS.Visible (end) *@
+    @* Render list options (body, right) *@
+    @soOrderList.ListOptions.RenderBody("right", soOrderList.RowCount)
+    </tr>
+    } @* End if *@
+
+    // Reset for template row
+    if (SameString(soOrderList.RowIndex, "$rowindex$"))
+        soOrderList.RowIndex = 0;
+
+    // Reset inline add/copy row
+    if ((soOrderList.IsCopy || soOrderList.IsAdd) && soOrderList.RowIndex is int rowIndex2 && rowIndex2 == 0)
+        soOrderList.RowIndex = 1;
+} @* End While *@
+</tbody>
+</table><!-- /.ew-table -->
+} @* End If TotalRecords > 0 *@
+</div><!-- /.ew-grid-middle-panel -->
+@if (Empty(soOrderList.CurrentAction) && !soOrderList.UseAjaxActions) {
+<input type="hidden" name="action" id="action" value="">
+}
+</form><!-- /.ew-list-form -->
+@{ soOrderList.CloseRecordset(); }
+@if (!soOrderList.IsExport()) {
+<div class="card-footer ew-grid-lower-panel">
+@if (!soOrderList.IsGridAdd && !(soOrderList.IsGridEdit && soOrderList.ModalGridEdit) && !soOrderList.IsMultiEdit) {
+@Html.Raw(soOrderList.Pager.Render())
+}
+<div class="ew-list-other-options">
+@soOrderList.OtherOptions.RenderBody("bottom")
+</div>
+</div>
+}
+</div><!-- /.ew-grid -->
+} else { // Show other options
+<div class="ew-list-other-options">
+@soOrderList.OtherOptions.ForEach(opt => opt.ButtonClass = "").RenderBody()
+</div>
+}
+</div>
+<div id="ew-footer-options">
+    @soOrderList.FooterOptions.RenderBody()
+</div>
+</main>
+@soOrderList.ShowPageFooter()
+@Html.Raw(GetDebugMessage())
+@ElapsedTime()
+@if (!soOrderList.IsExport()) {
+<script>
+// Field event handlers
+loadjs.ready("head", function() {
+    ew.addEventHandlers("so_order");
+});
+</script>
+<script>
+loadjs.ready("load", function() {
+    // Write your table-specific startup script here
+    // document.write("page loaded");
+});
+</script>
+}
